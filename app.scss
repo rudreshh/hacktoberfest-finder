@@ -1,0 +1,13 @@
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+.grid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 33%);
+}
+
+.headline {
+    font-family: "Sailec-Bold", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
