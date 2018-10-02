@@ -23,4 +23,4 @@ Please read [CONTRIBUTING.md](https://github.com/damcclean/hacktoberfest-finder/
 
 - **Duncan McClean** - *Initial work* - [damcclean](https://github.com/damcclean)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/damcclean/hacktoberfest-finder/contributors) who participated in this project.
