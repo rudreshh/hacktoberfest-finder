@@ -5,7 +5,16 @@
 .grid {
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: repeat(3, 33%);
+    grid-template-columns: repeat(1, 100%);
+    margin: 0 20px;
+
+    @screen sm {
+      grid-template-columns: repeat(2, calc((100% - 20px)/2));
+    }
+
+    @screen md {
+      grid-template-columns: repeat(3, calc((100% - 40px)/3));
+    }
 }
 
 .headline {
