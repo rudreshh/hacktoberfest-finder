@@ -6,6 +6,17 @@
     <title>Hacktoberfest 2018 Finder</title>
     <link rel="stylesheet" href="/app.css">
     <meta charset="UTF-8">
+    <meta name="description" content="Hacktoberfest Finder helps you find issues which you could help fix.">
+    <meta name="keywords" content="">
+    <meta name="author" content="Duncan McClean">
+
+    <meta name="theme-color" content="#582d41">
+
+    <meta property="og:title" content="Hacktoberfest 2018 Finder">
+    <meta property="og:description" content="Hacktoberfest Finder helps you find issues which you could help fix.">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="https://hackerfest-finder.netlify.com/">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -29,7 +40,7 @@
 
                 <div v-for="result in results" class="result bg-white p-2 rounded headline">
 
-                    <a class="text-black no-underline" :href="result.url">
+                    <a class="text-black no-underline" :href="result.html_url">
 
                         <h1 class="text-center text-3xl mb-4" v-html="result.title"> </h1>
 
@@ -42,12 +53,17 @@
         </section>
 
         <footer class="container mx-auto mt-16 p-8">
+          
             <p class="text-white text-center font-thin headline"> Unofficial site created by <a class="text-white no-underline" href="http://duncan.mcclean.co.uk">Duncan McClean</a>. </p>
+            
             <div class="mt-4 text-center">
-                <img src="GitHub-Mark-64px.png" width="64px">
-                <img src="twilio-tile.svg" width="64px">
-                <img src="DO_Logo_icon_blue.svg" width="64px">
-            </div>
+              
+                  <img src="GitHub-Mark-64px.png" width="64px">
+                  <img src="twilio-tile.svg" width="64px">
+                  <img src="DO_Logo_icon_blue.svg" width="64px">
+              
+             </div>
+          
         </footer>
 
     </div>
