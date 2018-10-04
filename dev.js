@@ -30,6 +30,9 @@ const app = new Vue({
                     ...this.results,
                     ...response.data.items
                 ];
+                this.results.forEach(element => {
+                    element.repoTitle = element.repository_url.split('/').slice(-1).join();
+                });
                 this.page = this.page + 1;
                 this.showViewMore = true;
             }).catch(error => {

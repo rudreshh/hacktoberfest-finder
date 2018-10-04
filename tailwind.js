@@ -52,7 +52,6 @@ let colors = {
   'crimson': '#582D41',
   'amber': '#FF9A56',
   'blue': '#2B81D9',
-  'blue-light': '#6cb2eb',
   'cyan': '#01FFFF',
 
 }
