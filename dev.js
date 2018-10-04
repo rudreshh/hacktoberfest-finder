@@ -11,8 +11,9 @@ const app = new Vue({
 
       return {
 
-        results: ''
-
+        results: [],
+        page: 1,
+        showViewMore: false
       }
 
     },
@@ -24,7 +25,15 @@ const app = new Vue({
             axios({
                 method: "get",
                 url: "https://api.github.com/search/issues?q=label:hacktoberfest+type:issue+state:open"
-            }).then(response => (this.results = response.data.items));
+            }).then(response => {
+                this.results = [
+                    ...this.results,
+                    ...response.data.items
+                ];
+                this.showViewMore = true;
+            }).catch(error => {
+                this.showViewMore = false;
+            });
 
         }
 
