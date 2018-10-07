@@ -39,14 +39,15 @@
 
             <div class="results grid">
                 
-                <a class="text-black no-underline" :href="result.html_url"></a>
+                <a v-for="result in results" class="text-black no-underline" :href="result.html_url"></a>
 
-                    <div v-for="result in results" class="result bg-white p-2 rounded headline">
+                    <div class="result bg-white p-2 rounded headline">
 
                         <h1 class="text-center text-3xl mb-4 break-words" v-html="result.title"> </h1>
                         <h3 class="text-center text-blue mb-4 break-words" v-html="result.repoTitle"> </h3>
 
                     </div>
+                
                 </a>
 
             </div>
