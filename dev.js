@@ -13,7 +13,8 @@ const app = new Vue({
 
         results: [],
         page: 1,
-        showViewMore: false
+        showViewMore: false,
+        isFetching: false,
       }
 
     },
@@ -21,7 +22,7 @@ const app = new Vue({
     methods: {
 
         loadIssues: function() {
-
+            this.isFetching = true;
             axios({
                 method: "get",
                 url: `https://api.github.com/search/issues?page=${this.page}&q=label:hacktoberfest+type:issue+state:open`
@@ -35,8 +36,10 @@ const app = new Vue({
                 });
                 this.page = this.page + 1;
                 this.showViewMore = true;
+                this.isFetching = false;
             }).catch(error => {
                 this.showViewMore = false;
+                this.isFetching = false;
             });
 
         }

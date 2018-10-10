@@ -50,7 +50,7 @@
 
             <div class="text-center mt-10" v-if="showViewMore">
 
-                <button class="font-thin headline text-cyan border-2 border-cyan text-3xl bg-crimson hover:bg-cyan hover:text-crimson py-2 px-4 rounded" v-on:click="loadIssues"> View more </button>
+                <button class="font-thin headline text-cyan border-2 border-cyan text-3xl bg-crimson hover:bg-cyan hover:text-crimson py-2 px-4 rounded" v-on:click="loadIssues" :disabled="isFetching"> {{ isFetching ? `Loading...` : `View more` }}</button>
 
             </div>
 
