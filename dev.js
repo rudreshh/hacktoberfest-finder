@@ -1,7 +1,4 @@
-import axios from 'axios';
-
 window.Vue = require('vue');
-window.axios = axios;
 
 const app = new Vue({
 
@@ -23,13 +20,12 @@ const app = new Vue({
 
         loadIssues: function() {
             this.isFetching = true;
-            axios({
-                method: "get",
-                url: `https://api.github.com/search/issues?page=${this.page}&q=label:hacktoberfest+type:issue+state:open`
-            }).then(response => {
+            fetch(`https://api.github.com/search/issues?page=${this.page}&q=label:hacktoberfest+type:issue+state:open`)
+            .then(response => response.json())
+            .then(response => {
                 this.results = [
                     ...this.results,
-                    ...response.data.items
+                    ...response.items
                 ];
                 this.results.forEach(element => {
                     element.repoTitle = element.repository_url.split('/').slice(-1).join();
