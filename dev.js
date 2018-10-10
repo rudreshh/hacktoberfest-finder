@@ -19,6 +19,7 @@ const app = new Vue({
     methods: {
 
         loadIssues: function() {
+            this.isFetching = true;
             fetch(`https://api.github.com/search/issues?page=${this.page}&q=label:hacktoberfest+type:issue+state:open`)
             .then(response => response.json())
             .then(response => {
