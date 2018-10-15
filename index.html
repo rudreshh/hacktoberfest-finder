@@ -42,7 +42,7 @@
                 <a v-for="result in results" class="result bg-white p-2 rounded headline text-black no-underline" :href="result.html_url">
 
                     <h1 class="text-center text-3xl mb-4 break-words" v-html="result.title"> </h1>
-                    <h3 class="text-center text-blue mb-4 break-words" v-html="result.repoTitle"> </h3>
+                    <h3 class="text-center text-blue mb-4 break-words" v-html="result.user.login+'/'+result.repoTitle"> </h3>
                 
                 </a>
 
