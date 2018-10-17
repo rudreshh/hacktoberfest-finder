@@ -20,7 +20,16 @@
     <meta property="og:description" content="Hacktoberfest Finder helps you find issues which you could help fix.">
     <meta property="og:image" content="">
     <meta property="og:url" content="https://hacktoberfest-finder.netlify.com/">
-
+    <style>
+        @font-face {
+            font-family: Squealer;
+            src: url(squealer.ttf);
+        }
+        
+        .font {
+            font-family: Squealer;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,15 +44,15 @@
 
         <section class="container mx-auto finder">
 
-            <h1 class="text-cyan text-4xl sm:text-5xl headline text-center font-thin tracking-wide mb-8"> Hacktoberfest Issue Finder </h1>
+            <h1 class="text-cyan text-4xl sm:text-5xl headline text-center font-thin tracking-wide mb-8 font"> Hacktoberfest Issue Finder </h1>
 
             <div class="results grid">
-                
+
                 <a v-for="result in results" class="result bg-white p-2 rounded headline text-black no-underline" :href="result.html_url">
 
                     <h1 class="text-center text-3xl mb-4 break-words" v-text="result.title"> </h1>
                     <h3 class="text-center text-blue mb-4 break-words" v-text="result.user.login+'/'+result.repoTitle"> </h3>
-                
+
                 </a>
 
             </div>
@@ -82,13 +91,14 @@
 
                 </a>
 
-             </div>
+            </div>
 
         </footer>
 
     </div>
 
-    <script src="/app.js"> </script>
+    <script src="/app.js">
+    </script>
 
 </body>
 
