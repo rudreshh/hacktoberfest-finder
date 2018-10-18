@@ -27,3 +27,5 @@
 [SamuelGrave](https://github.com/SamuelGrave)
 
 [bwendt-mylo](https://github.com/bwendt-mylo)
+
+[dicky71](https://github.com/dickyw71)
