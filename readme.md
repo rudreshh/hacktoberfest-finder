@@ -19,6 +19,8 @@ If you want to setup this site on your own:
 
 Please read [CONTRIBUTING.md](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
+If you are a first time contributor, please add your name to [CONTRIBUTORS.md](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md)
+
 ## Authors
 
 - **Duncan McClean** - *Initial work* - [damcclean](https://github.com/damcclean)
