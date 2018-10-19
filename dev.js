@@ -14,6 +14,8 @@ const app = new Vue({
         language: '',
         showViewMore: false,
         isFetching: false,
+        filtersToggled: false
+
       }
 
     },
@@ -21,6 +23,7 @@ const app = new Vue({
     methods: {
 
         loadIssues: function() {
+
             this.isFetching = true;
             fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.language}+label:hacktoberfest+type:issue+state:open`)
             .then(response => response.json())
@@ -42,15 +45,23 @@ const app = new Vue({
 
         },
 
-        // handling the language option
-        chooseLanguage: function(language){
+        chooseLanguage: function(language) {
+
             this.results = [];
             this.language = language.split('+').join('%2B').split('#').join('%23').toLowerCase();
             this.showViewMore = false;
             this.isFetching = false;
             this.page = 1;
             this.loadIssues();
+
+        },
+
+        toggleFilter: function() {
+
+        	this.filtersToggled = !this.filtersToggled
+
         }
+
     },
 
     mounted() {
