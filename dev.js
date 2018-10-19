@@ -10,6 +10,8 @@ const app = new Vue({
 
         results: [],
         page: 1,
+        languages: ['JavaScript','Python','Java','PHP','Go','HTML','C++','Ruby','TypeScript','C#'],
+        language: '',
         showViewMore: false,
         isFetching: false,
       }
@@ -20,7 +22,7 @@ const app = new Vue({
 
         loadIssues: function() {
             this.isFetching = true;
-            fetch(`https://api.github.com/search/issues?page=${this.page}&q=label:hacktoberfest+type:issue+state:open`)
+            fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.language}+label:hacktoberfest+type:issue+state:open`)
             .then(response => response.json())
             .then(response => {
                 this.results = [
@@ -38,14 +40,23 @@ const app = new Vue({
                 this.isFetching = false;
             });
 
-        }
+        },
 
+        // handling the language option
+        chooseLanguage: function(language){
+            this.results = [];
+            this.language = language.split('+').join('%2B').split('#').join('%23').toLowerCase();
+            this.showViewMore = false;
+            this.isFetching = false;
+            this.page = 1;
+            this.loadIssues();
+        }
     },
 
     mounted() {
 
         this.loadIssues()
-
+    
     }
 
 });
