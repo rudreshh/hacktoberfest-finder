@@ -22,7 +22,7 @@ const app = new Vue({
 
     methods: {
 
-        loadIssues: function() {
+        loadIssues() {
 
             this.isFetching = true;
             fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.language}+label:hacktoberfest+type:issue+state:open`)
@@ -45,7 +45,7 @@ const app = new Vue({
 
         },
 
-        chooseLanguage: function(language) {
+        chooseLanguage(language) {
 
             this.results = [];
             this.language = language.split('+').join('%2B').split('#').join('%23').toLowerCase();
@@ -53,21 +53,19 @@ const app = new Vue({
             this.isFetching = false;
             this.page = 1;
             this.loadIssues();
-
         },
 
-        toggleFilter: function() {
+        toggleFilter() {
 
-        	this.filtersToggled = !this.filtersToggled
+            this.filtersToggled = !this.filtersToggled
 
         }
-
     },
 
     mounted() {
 
         this.loadIssues()
-    
+
     }
 
 });
