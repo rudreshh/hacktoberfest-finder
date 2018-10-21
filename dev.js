@@ -11,7 +11,7 @@ const app = new Vue({
         results: [],
         page: 1,
         languages: ['JavaScript','Python','Java','PHP','Go','HTML','C++','Ruby','TypeScript','C#'],
-        language: '',
+        selectedLanguage: '',
         showViewMore: false,
         isFetching: false,
         filtersToggled: false
@@ -25,7 +25,7 @@ const app = new Vue({
         loadIssues() {
 
             this.isFetching = true;
-            fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.language}+label:hacktoberfest+type:issue+state:open`)
+            fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open`)
             .then(response => response.json())
             .then(response => {
                 this.results = [
@@ -46,9 +46,9 @@ const app = new Vue({
         },
 
         chooseLanguage(language) {
-
             this.results = [];
-            this.language = language.split('+').join('%2B').split('#').join('%23').toLowerCase();
+            this.selectedLanguage = language;
+            this.filtersToggled = !this.filtersToggled
             this.showViewMore = false;
             this.isFetching = false;
             this.page = 1;
@@ -59,6 +59,12 @@ const app = new Vue({
 
             this.filtersToggled = !this.filtersToggled
 
+        }
+    },
+
+    computed: {
+        filterLanguage() {
+            return this.selectedLanguage.split('+').join('%2B').split('#').join('%23').toLowerCase();
         }
     },
 
