@@ -69,7 +69,7 @@
 
                 <a class="filter-language text-cyan text-xl font-thin mb-4 no-underline text-center" href="#" @click="toggleFilter()">Filter by language <strong>{{this.selectedLanguage}}</strong></a>
 
-                <div v-if="filtersToggled" class="flex flex-row justify-center">
+                <div v-if="filtersToggled" class="flex flex-col items-center md:flex-row justify-center">
 
                     <a v-for="language in languages" class="font-thin text-cyan text-1xl no-underline m-2 language" href="#" @click="chooseLanguage(language)" v-text="language"> </a>
 
