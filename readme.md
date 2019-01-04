@@ -1,6 +1,6 @@
-<p style="text-align: center;">
+<center>
 	<img src="https://github.com/damcclean/hacktoberfest-finder/blob/master/assets/images/header.png" width="250"/>
-</p>
+</center>
 
 # Hacktoberfest 2018 Finder
 
