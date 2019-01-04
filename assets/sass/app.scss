@@ -40,3 +40,22 @@
     grid-template-columns: repeat(3, calc((100% - 40px)/3));
   }
 }
+
+@font-face {
+  font-family: Squealer;
+  src: url('/assets/fonts/squealer.ttf');
+}
+
+.font {
+  font-family: Squealer;
+}
+@media (min-width: 576px) {
+  .font {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 992px) {
+  .font {
+    font-size: 5rem;
+  }
+}

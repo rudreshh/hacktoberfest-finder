@@ -5,44 +5,49 @@ const app = new Vue({
     el: '#app',
 
     data() {
-
       return {
-
         results: [],
         page: 1,
-        languages: ['JavaScript','Python','Java','PHP','Go','HTML','C++','Ruby','TypeScript','C#'],
+        languages: [
+            'JavaScript', 
+            'Python', 
+            'Java',
+            'PHP',
+            'Go',
+            'HTML',
+            'C++',
+            'Ruby',
+            'TypeScript',
+            'C#'
+        ],
         selectedLanguage: '',
         showViewMore: false,
         isFetching: false,
         filtersToggled: false
-
       }
-
     },
 
     methods: {
 
         loadIssues() {
-
             this.isFetching = true;
             fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open`)
-            .then(response => response.json())
-            .then(response => {
-                this.results = [
-                    ...this.results,
-                    ...response.items
-                ];
-                this.results.forEach(element => {
-                    element.repoTitle = element.repository_url.split('/').slice(-1).join();
+                .then(response => response.json())
+                .then(response => {
+                    this.results = [
+                        ...this.results,
+                        ...response.items
+                    ];
+                    this.results.forEach(element => {
+                        element.repoTitle = element.repository_url.split('/').slice(-1).join();
+                    });
+                    this.page = this.page + 1;
+                    this.showViewMore = true;
+                    this.isFetching = false;
+                }).catch(error => {
+                    this.showViewMore = false;
+                    this.isFetching = false;
                 });
-                this.page = this.page + 1;
-                this.showViewMore = true;
-                this.isFetching = false;
-            }).catch(error => {
-                this.showViewMore = false;
-                this.isFetching = false;
-            });
-
         },
 
         chooseLanguage(language) {
@@ -56,9 +61,7 @@ const app = new Vue({
         },
 
         toggleFilter() {
-
             this.filtersToggled = !this.filtersToggled
-
         }
     },
 
@@ -69,9 +72,7 @@ const app = new Vue({
     },
 
     mounted() {
-
         this.loadIssues()
-
     }
 
 });

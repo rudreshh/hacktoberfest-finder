@@ -1,11 +1,14 @@
-
-<img src="https://github.com/damcclean/hacktoberfest-finder/blob/master/images/header.png" width="250"/>
+<p style="text-align: center;">
+	<img src="https://github.com/damcclean/hacktoberfest-finder/blob/master/images/header.png" width="250"/>
+</p>
 
 # Hacktoberfest 2018 Finder
 
-The [Hacktoberfest](https://hacktoberfest.digitalocean.com/) Finder helps you to find issues which you could help fix.
+The [Hacktoberfest Finder](https://hacktoberfest-finder.netlify.com) helps you to find issues which you could help fix.
 
-Try it out yourself: https://hacktoberfest-finder.netlify.com/
+## What is Hacktoberfest?
+
+[Hacktoberfest](https://hacktoberfest.digitalocean.com/)  is a month-long celebration of open source software run by DigitalOcean in partnership with GitHub and Twilio.
 
 ## Setup Process
 
@@ -21,8 +24,6 @@ Please read [CONTRIBUTING.md](https://github.com/damcclean/hacktoberfest-finder/
 
 If you are a first time contributor, please add your name to [CONTRIBUTORS.md](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md)
 
-## Authors
+## Contributors
 
-- **Duncan McClean** - *Initial work* - [damcclean](https://github.com/damcclean)
-
-See also the list of [contributors](https://github.com/damcclean/hacktoberfest-finder/contributors) who participated in this project.
+You can find a list of contributors to this project in the [`CONTRIBUTORS.md`](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md) file.
