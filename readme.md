@@ -1,5 +1,5 @@
 <p style="text-align: center;">
-	<img src="https://github.com/damcclean/hacktoberfest-finder/blob/master/images/header.png" width="250"/>
+	<img src="https://github.com/damcclean/hacktoberfest-finder/blob/master/assets/images/header.png" width="250"/>
 </p>
 
 # Hacktoberfest 2018 Finder
