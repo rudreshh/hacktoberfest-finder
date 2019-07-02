@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "cross-env": "5.2.0",
-    "sass": "^1.22.1",
+    "sass": "^1.22.2",
     "sass-loader": "7.*",
     "vue-template-compiler": "^2.6.10"
   }
