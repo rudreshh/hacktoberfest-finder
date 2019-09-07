@@ -1,18 +1,19 @@
-<center>
-	<img src="https://github.com/damcclean/hacktoberfest-finder/blob/master/assets/images/header.png" width="250"/>
-</center>
+# Hacktoberfest Finder
 
-# Hacktoberfest 2018 Finder
+> Web app to make it easy to find Github issues with the tag 'Hacktoberfest'.
 
-The [Hacktoberfest Finder](https://hacktoberfest-finder.netlify.com) helps you to find issues which you could help fix.
+## ❓ What is Hacktoberfest?
 
-## What is Hacktoberfest?
+[Hacktoberfest](https://hacktoberfest.digitalocean.com/) is a festival run by Digital Ocean and .dev encourages people to participate in the open-source software community.
 
-[Hacktoberfest](https://hacktoberfest.digitalocean.com/)  is a month-long celebration of open source software run by DigitalOcean in partnership with GitHub and Twilio.
+## 💻 Local Setup
 
-## Setup Process
+If you want to get Hacktoberfest Finder setup on your computer, you'll need:
 
-If you want to setup this site on your own:
+* Node
+* npm/yarn
+
+If you've got everything, you can install it by following the below steps.
 
 1. Fork and clone this repository to your computer
 2. Run `npm install` in the project folder
@@ -24,6 +25,6 @@ Please read [CONTRIBUTING.md](https://github.com/damcclean/hacktoberfest-finder/
 
 If you are a first time contributor, please add your name to [CONTRIBUTORS.md](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md)
 
-## Contributors
+## 👥 Contributors
 
 You can find a list of contributors to this project in the [`CONTRIBUTORS.md`](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md) file.
