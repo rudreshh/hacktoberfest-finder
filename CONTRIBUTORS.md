@@ -26,3 +26,4 @@
 ## 2019
 
 - [Kristiyan](https://github.com/kristiyan-ASW-G-08)
+- [dennypradipta](https://github.com/dennypradipta)
