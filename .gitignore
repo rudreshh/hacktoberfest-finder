@@ -6,3 +6,4 @@ build
 !build/.gitkeep
 package-lock.json
 mix-manifest.json
+hot
