@@ -1,114 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
+  <head>
     <title>Hacktoberfest Finder</title>
-    <link rel="stylesheet" href="/build/app.css">
+    <link rel="stylesheet" href="/build/app.css" />
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Hacktoberfest Finder helps you find issues which you could help fix." />
+    <meta name="keywords"content="Hacktoberfest, Programming, GitHub, DigitalOcean, Twilio"/>
+    <meta name="author" content="Duncan McClean and Contributors" />
+    <meta property="og:title" content="Hacktoberfest 2018 Finder" />
+    <meta property="og:description"content="Hacktoberfest Finder helps you find issues which you could help fix."/>
+    <meta property="og:image" content="" />
+    <meta property="og:url"content="https://hacktoberfest-finder.netlify.com/"/>
 
-    <meta name="description" content="Hacktoberfest Finder helps you find issues which you could help fix.">
-    <meta name="keywords" content="Hacktoberfest, Programming, GitHub, DigitalOcean, Twilio">
-    <meta name="author" content="Duncan McClean and Contributors">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="/assets/images/favicons/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#6b3d53" />
+    <meta name="theme-color" content="#582d41" />
+  </head>
 
-    <meta property="og:title" content="Hacktoberfest 2018 Finder">
-    <meta property="og:description" content="Hacktoberfest Finder helps you find issues which you could help fix.">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="https://hacktoberfest-finder.netlify.com/">
+  <body>
+    <div class="bg-secondary" id="app">
+      <header class="container mx-auto text-center mb-8">
+        <img
+          src="/assets/images/header.png"
+          alt="Hacktoberfest"
+          width="500px"
+        />
+      </header>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/assets/images/favicons/site.webmanifest">
-    <link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#6b3d53">
-    <meta name="theme-color" content="#582d41">
-</head>
+      <section class="container mx-auto finder">
+        <h1
+          class="text-primary text-5xl headline text-center font-thin tracking-wide mb-1 font"
+        >
+          Hacktoberfest Issue Finder
+        </h1>
 
-<body>
+        <div class="mb-8 flex flex-col">
+          <a
+            class="filter-language text-primary text-xl font-thin mb-4 no-underline text-center"
+            href="#"
+            @click="toggleFilter()"
+            >Filter by language <strong>{{ this.selectedLanguage }}</strong></a
+          >
 
-    <div class="bg-crimson" id="app">
+          <div
+            v-if="filtersToggled"
+            class="flex flex-col items-center md:flex-row justify-center"
+          >
+            <a
+              v-for="language in languages"
+              class="font-thin text-primary text-1xl no-underline m-2 language"
+              href="#"
+              @click="chooseLanguage(language)"
+              v-text="language"
+            >
+            </a>
+          </div>
+        </div>
 
-        <header class="container mx-auto text-center mb-8">
-            <img src="/assets/images/header.png" alt="Hacktoberfest" width="500px">
-        </header>
+        <div class="results grid">
+          <a
+            v-for="result in results"
+            class="result bg-white p-2 rounded headline text-black no-underline issue-box"
+            :href="result.html_url"
+            :title="result.title"
+            target="_blank"
+          >
+            <h1
+              class="text-center text-3xl mb-4 break-words"
+              v-text="result.title"
+            ></h1>
+            <h3
+              class="text-center text-blue mb-4 break-words"
+              v-text="result.user.login+'/'+result.repoTitle"
+            ></h3>
+          </a>
+        </div>
 
-        <section class="container mx-auto finder">
-            <h1 class="text-cyan text-5xl headline text-center font-thin tracking-wide mb-1 font">Hacktoberfest Issue
-                Finder</h1>
+        <div class="text-center mt-10" v-if="showViewMore">
+          <button
+            class="font-thin headline text-primary border-2 border-primary text-3xl bg-secondary hover:bg-primary hover:text-secondary py-2 px-4 rounded"
+            v-on:click="loadIssues"
+            :disabled="isFetching"
+          >
+            {{ isFetching ? `Loading...` : `View more` }}
+          </button>
+        </div>
+      </section>
 
-            <div class="mb-8 flex flex-col">
-                <a class="filter-language text-cyan text-xl font-thin mb-4 no-underline text-center" href="#"
-                    @click="toggleFilter()">Filter by language <strong>{{this.selectedLanguage}}</strong></a>
+      <footer class="container mx-auto mt-16 p-8">
+        <p class="text-white text-center font-thin headline">
+          Unofficial site created by
+          <a class="text-white no-underline" href="http://duncan.mcclean.co.uk"
+            >Duncan McClean</a
+          >
+          and
+          <a
+            class="text-white no-underline"
+            href="https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md"
+            >contributors</a
+          >.
+        </p>
 
-                <div v-if="filtersToggled" class="flex flex-col items-center md:flex-row justify-center">
-                    <a v-for="language in languages" class="font-thin text-cyan text-1xl no-underline m-2 language"
-                        href="#" @click="chooseLanguage(language)" v-text="language"> </a>
-                </div>
-            </div>
+        <p class="text-white text-center font-thin headline mt-2">
+          <a
+            class="text-white no-underline"
+            href="https://github.com/damcclean/hacktoberfest-finder"
+          >
+            Help on GitHub!
+          </a>
+        </p>
 
-            <div class="results grid">
-                <a v-for="result in results"
-                    class="result bg-white p-2 rounded headline text-black no-underline issue-box"
-                    :href="result.html_url" :title="result.title" target="_blank">
-                    <h1 class="text-center text-3xl mb-4 break-words" v-text="result.title"> </h1>
-                    <h3 class="text-center text-blue mb-4 break-words" v-text="result.user.login+'/'+result.repoTitle">
-                    </h3>
-                </a>
-            </div>
-
-            <div class="text-center mt-10" v-if="showViewMore">
-                <button
-                    class="font-thin headline text-cyan border-2 border-cyan text-3xl bg-crimson hover:bg-cyan hover:text-crimson py-2 px-4 rounded"
-                    v-on:click="loadIssues" :disabled="isFetching">
-                    {{ isFetching ? `Loading...` : `View more` }}</button>
-            </div>
-
-        </section>
-
-        <footer class="container mx-auto mt-16 p-8">
-
-            <p class="text-white text-center font-thin headline">Unofficial site created by <a
-                    class="text-white no-underline" href="http://duncan.mcclean.co.uk">Duncan McClean</a> and <a
-                    class="text-white no-underline"
-                    href="https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md">contributors</a>.
-            </p>
-
-            <p class="text-white text-center font-thin headline mt-2"> <a class="text-white no-underline"
-                    href="https://github.com/damcclean/hacktoberfest-finder"> Help on GitHub! </a> </p>
-
-            <div class="mt-4 flex items-center justify-center">
-                <a class="m-2" href="https://www.digitalocean.com/">
-                    <img src="/assets/images/digital-ocean.png">
-                </a>
-
-                <a class="m-2" href="https://github.com/">
-                    <img src="/assets/images/github-transparent.png">
-                </a>
-
-                <a class="m-2" href="https://www.twilio.com/">
-                    <img src="/assets/images/twilio.png">
-                </a>
-            </div>
-
-        </footer>
-
+        <div class="mt-4 flex items-center justify-center">
+          <a class="m-2" href="https://www.digitalocean.com/">
+            <img src="/assets/images/digital-ocean.png" />
+          </a>
+          <a class="m-2" href="https://dev.to/">
+            <img src="/assets/images/dev.svg" />
+          </a>
+        </div>
+      </footer>
     </div>
-
-    <script src="/build/app.js"> </script>
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(function () {
-                    console.log('Service Worker is now registered');
-                });
-        }
-    </script>
-
-</body>
-
+    <script src="/build/app.js"></script>
+  </body>
 </html>
