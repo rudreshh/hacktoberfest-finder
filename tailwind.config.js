@@ -126,8 +126,8 @@ module.exports = {
         "Helvetica Neue",
         "sans-serif"
       ],
-      mono: [
-        '"Space Mono"'
+      space: [
+        "Space Mono"
       ]
     },
     fontSize: {
