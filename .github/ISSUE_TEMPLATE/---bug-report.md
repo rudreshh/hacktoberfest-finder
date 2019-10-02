@@ -4,7 +4,6 @@ about: Found a bug in Hacktoberfest Finder?
 title: "\U0001F41B"
 labels: bug, hacktoberfest
 assignees: ''
-
 ---
 
 ## Describe the bug
