@@ -46,7 +46,7 @@
         <div v-if="isFilterToggled" class="filter-values flex">
           <button
             v-for="language in languages"
-            class="font-thin text-primary text-1xl no-underline m-2 language"
+            class="font-thin text-primary text-1xl m-2 language"
             :text="language"
             @click="chooseLanguage(language)"
           >
@@ -58,7 +58,7 @@
         <div id="results" class="grid">
           <a
             v-for="result in results"
-            class="bg-white hover:bg-grey-lighter rounded-lg p-2 text-black no-underline flex flex-col justify-center items-center overflow-auto shadow-lg"
+            class="bg-white hover:bg-grey-lighter rounded-lg p-2 text-black flex flex-col justify-center items-center overflow-auto shadow-lg"
             target="_blank"
             :href="result.html_url"
             :title="result.title"

@@ -11,13 +11,13 @@ mix.js('assets/js/app.js', 'build')
 	.options({
 	    processCssUrls: false,
 
-	    postCss: [ 
-	    	tailwindcss('./tailwind.js') 
+	    postCss: [
+	    	tailwindcss
 	    ],
 	})
 	.postCssConfig({
-		plugins: [ 
-			postCSSNested() 
+		plugins: [
+			postCSSNested()
 		]
 	});
 
