@@ -1,47 +1,57 @@
+/**
+    Require dependencies
+*/
+
 window.Vue = require('vue');
 
-const app = new Vue({
+/**
+    Create a Vue instance
+*/
 
+const app = new Vue({
     el: '#app',
 
     data() {
       return {
-        results: [],
-        page: 1,
         languages: [
-            'JavaScript', 
-            'Python', 
+            'JavaScript',
+            'TypeScript',
+            'Python',
             'Java',
             'PHP',
             'Go',
             'HTML',
             'C++',
-            'Ruby',
-            'TypeScript',
-            'C#'
+            'C#',
+            'Ruby'
         ],
-        selectedLanguage: '',
-        showViewMore: false,
+
+        results: [],
+        page: 1,
+        currentLanguage: '',
+        isFilterToggled: false,
         isFetching: false,
-        filtersToggled: false
+        showViewMore: false
       }
     },
 
     methods: {
-
         loadIssues() {
             this.isFetching = true;
-            fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open`)
+
+            fetch('https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open')
                 .then(response => response.json())
                 .then(response => {
                     this.results = [
                         ...this.results,
                         ...response.items
                     ];
+
                     this.results.forEach(element => {
                         element.repoTitle = element.repository_url.split('/').slice(-1).join();
                     });
-                    this.page = this.page + 1;
+
+                    this.page = this.page++;
                     this.showViewMore = true;
                     this.isFetching = false;
                 }).catch(error => {
@@ -52,27 +62,27 @@ const app = new Vue({
 
         chooseLanguage(language) {
             this.results = [];
-            this.selectedLanguage = language;
-            this.filtersToggled = !this.filtersToggled
+            this.currentLanguage = language;
+            this.isFilterToggled = !this.isFilterToggled;
             this.showViewMore = false;
             this.isFetching = false;
             this.page = 1;
+
             this.loadIssues();
         },
 
         toggleFilter() {
-            this.filtersToggled = !this.filtersToggled
+            this.isFilterToggled = !this.isFilterToggled
         }
     },
 
     computed: {
         filterLanguage() {
-            return this.selectedLanguage.split('+').join('%2B').split('#').join('%23').toLowerCase();
+            return this.currentLanguage.split('+').join('%2B').split('#').join('%23').toLowerCase();
         }
     },
 
     mounted() {
         this.loadIssues()
     }
-
 });
