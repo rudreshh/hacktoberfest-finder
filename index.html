@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Hacktoberfest Finder</title>
-    <link rel="stylesheet" href="./build/app.css" />
+    <link rel="stylesheet" href="/build/app.css" />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +15,7 @@
     <meta property="og:image" content="" />
     <meta property="og:url" content="https://hacktoberfest-finder.netlify.com/" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png" />
     <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
@@ -39,22 +39,11 @@
           <button class="text-primary text-lg font-semibold uppercase">
             Filter by language
           </button>
+          <button class="text-primary text-lg font-semibold uppercase" @click="toggleNoReplyFilter()">
+            Filter by no reply
+          </button>
         </div>
       </header>
-      <div>
-        <button 
-        class="text-primary text-lg font-semibold uppercase"
-        @click="changeSorting('comments-desc')">
-          Most commented
-        </button>
-        |
-        <button 
-        class="text-primary text-lg font-semibold uppercase"
-        @click="changeSorting('comments-asc')">
-          Less commented
-        </button>       
-      </div>
-
 
       <div class="mb-8 flex justify-end filter">
         <div v-if="isFilterToggled" class="filter-values flex">
@@ -111,7 +100,7 @@
       </div>
     </footer>
 
-    <script src="./build/app.js"></script>
+    <script src="/build/app.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service-worker.js').then(function() {
