@@ -48,7 +48,7 @@
             v-for="language in languages"
             class="font-thin text-secondary text-1xl m-2 language"
             :text="language"
-            @click="() => chooseLanguage(language)"
+            @click="chooseLanguage(language)"
           >
           {{ language }}
           </button>
