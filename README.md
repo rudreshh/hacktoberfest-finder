@@ -2,6 +2,8 @@
 
 > Web app to make it easy to find Github issues with the tag 'Hacktoberfest'.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bf2c479d-fcaf-4c46-b1ad-dccf2cc4e988/deploy-status)](https://app.netlify.com/sites/hacktoberfest-finder/deploys)
+
 ## ❓ What is Hacktoberfest?
 
 [Hacktoberfest](https://hacktoberfest.digitalocean.com/) is a festival run by Digital Ocean and .dev encourages people to participate in the open-source software community.

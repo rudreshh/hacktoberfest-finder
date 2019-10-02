@@ -51,6 +51,9 @@
               </button>
             </div>
           </div>
+          <button class="text-primary text-lg font-semibold uppercase mx-2" @click="toggleNoReplyFilter()">
+            Filter by no reply
+          </button>
         </div>
       </header>
 
@@ -65,6 +68,7 @@
           >
             <h2 class="text-center text-3xl mb-4">{{ result.title }}</h2>
             <h3 class="text-center text-blue mb-4 break-words">{{ result.user.login }}/{{ result.repoTitle }}</h3>
+            <span>Comments: {{result.comments}}</span>
           </a>
         </div>
 

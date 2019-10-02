@@ -8,6 +8,7 @@
 - [audrius59](https://github.com/audrius59)
 - [SARAN-thala](https://github.com/SARAN-thala)
 - [wooojek](https://github.com/wooojek)
+- [vanya829](https://github.com/vanya829)
 
 ## 2018
 
