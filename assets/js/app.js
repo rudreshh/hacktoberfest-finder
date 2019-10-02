@@ -31,7 +31,8 @@ const app = new Vue({
         currentLanguage: '',
         isFilterToggled: false,
         isFetching: false,
-        showViewMore: false
+        showViewMore: false,
+        sorting: 'comments-asc'
       }
     },
 
@@ -39,7 +40,7 @@ const app = new Vue({
         loadIssues() {
             this.isFetching = true;
 
-            fetch('https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open')
+            fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open+sort:${this.sorting}`)
                 .then(response => response.json())
                 .then(response => {
                     this.results = [
@@ -73,6 +74,15 @@ const app = new Vue({
 
         toggleFilter() {
             this.isFilterToggled = !this.isFilterToggled
+        },
+
+        changeSorting(option) {
+            this.sorting = option;
+            this.results = [];
+            this.showViewMore = false;
+            this.isFetching = false;
+            this.page = 1;
+            this.loadIssues()
         }
     },
 
