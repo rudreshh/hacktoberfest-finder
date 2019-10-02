@@ -40,7 +40,7 @@
         </div>
 
         <a
-          class="filter-language text-primary text-xl font-thin no-underline text-center"
+          class="filter-language text-primary text-xl font-thin text-center"
           href="#"
           @click="toggleFilter()"
           >Filter by language <strong>{{ this.selectedLanguage }}</strong></a
@@ -51,7 +51,7 @@
           <div v-if="filtersToggled" class="filter-values flex">
             <a
               v-for="language in languages"
-              class="font-thin text-primary text-1xl no-underline m-2 language"
+              class="font-thin text-primary text-1xl m-2 language"
               href="#"
               @click="chooseLanguage(language)"
               v-text="language"
@@ -63,7 +63,7 @@
         <div class="results grid">
           <a
             v-for="result in results"
-            class="result bg-white p-2 rounded text-black no-underline issue-box max-w-sm rounded overflow-hidden shadow-lg"
+            class="result bg-white p-2 rounded text-black issue-box max-w-sm rounded overflow-hidden shadow-lg"
             :href="result.html_url"
             :title="result.title"
             target="_blank"
@@ -93,12 +93,12 @@
       <footer class="container mx-auto mt-16 p-8">
         <p class="text-white text-center font-thin ">
           Unofficial site created by
-          <a class="text-white no-underline" href="http://duncan.mcclean.co.uk"
+          <a class="text-white" href="http://duncan.mcclean.co.uk"
             >Duncan McClean</a
           >
           and
           <a
-            class="text-white no-underline"
+            class="text-white"
             href="https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md"
             >contributors</a
           >.
@@ -106,7 +106,7 @@
 
         <p class="text-white text-center font-thin mt-2">
           <a
-            class="text-white no-underline"
+            class="text-white"
             href="https://github.com/damcclean/hacktoberfest-finder"
           >
             Help on GitHub!

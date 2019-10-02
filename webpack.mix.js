@@ -9,7 +9,7 @@ mix.js('assets/js/app.js', 'build')
     .postCss('assets/css/app.css', 'build')
 	    .options({
 	      processCssUrls: false,
-	      postCss: [ tailwindcss('./tailwind.js') ],
+	      postCss: [ tailwindcss ],
 			})
 			.postCssConfig({
 				plugins: [ postCSSNested() ]
