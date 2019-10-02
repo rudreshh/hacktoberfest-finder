@@ -39,7 +39,7 @@ const app = new Vue({
         loadIssues() {
             this.isFetching = true;
 
-            fetch('https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open')
+            fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open`)
                 .then(response => response.json())
                 .then(response => {
                     this.results = [

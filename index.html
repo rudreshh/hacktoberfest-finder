@@ -36,7 +36,7 @@
         </div>
 
         <div class="flex flex-row items-center">
-          <button class="text-primary text-lg font-semibold uppercase">
+          <button class="text-primary text-lg font-semibold uppercase" @click="toggleFilter">
             Filter by language
           </button>
         </div>
@@ -46,10 +46,11 @@
         <div v-if="isFilterToggled" class="filter-values flex">
           <button
             v-for="language in languages"
-            class="font-thin text-primary text-1xl m-2 language"
+            class="font-thin text-primary text-1xl no-underline m-2 language"
             :text="language"
-            @click="chooseLanguage(language)"
+            @click="() => chooseLanguage(language)"
           >
+          {{language}}
           </button>
         </div>
       </div>
