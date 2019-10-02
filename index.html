@@ -13,8 +13,7 @@
     <meta property="og:title" content="Hacktoberfest 2019 Finder" />
     <meta property="og:description" content="Hacktoberfest Finder helps you find issues which you could help fix." />
     <meta property="og:image" content="" />
-    <meta property="og:url" content="https://hacktoberfest-finder.netlify.com/"
-    />
+    <meta property="og:url" content="https://hacktoberfest-finder.netlify.com/" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png" />
@@ -25,104 +24,78 @@
     <meta name="theme-color" content="#582d41" />
   </head>
 
-  <body>
-    <div class="bg-secondary" id="app">
-      <header class="header container mx-auto row flex">
-        <div class="flex site-name">
-          <img
-            src="/assets/images/header.svg"
-            alt="Hacktoberfest"
-            width="304"
-          />
-          <h1 class="text-primary text-5xl font-thin tracking-wide font">
+  <body class="bg-secondary font-space">
+    <div id="app">
+      <header class="container mx-auto my-6 flex flex-row justify-between">
+        <div class="flex flex-row items-center">
+          <img src="/assets/images/header.svg" alt="Hacktoberfest 2019" width="400px">
+
+          <h1 class="text-5xl font-bold text-primary uppercase">
             Issue Finder
           </h1>
         </div>
 
-        <a
-          class="filter-language text-primary text-xl font-thin text-center"
-          href="#"
-          @click="toggleFilter()"
-          >Filter by language <strong>{{ this.selectedLanguage }}</strong></a
-        >
-      </header>
-      <section class="container mx-auto finder">
-        <div class="mb-8 flex justify-end filter">
-          <div v-if="filtersToggled" class="filter-values flex">
-            <a
-              v-for="language in languages"
-              class="font-thin text-primary text-1xl m-2 language"
-              href="#"
-              @click="chooseLanguage(language)"
-              v-text="language"
-            >
-            </a>
-          </div>
-        </div>
-
-        <div class="results grid">
-          <a
-            v-for="result in results"
-            class="result bg-white p-2 rounded text-black issue-box max-w-sm rounded overflow-hidden shadow-lg"
-            :href="result.html_url"
-            :title="result.title"
-            target="_blank"
-          >
-            <h1
-              class="text-center text-3xl mb-4 break-words"
-              v-text="result.title"
-            ></h1>
-            <h3
-              class="text-center text-blue mb-4 break-words"
-              v-text="result.user.login+'/'+result.repoTitle"
-            ></h3>
-          </a>
-        </div>
-
-        <div class="text-center mt-10" v-if="showViewMore">
-          <button
-            class="font-thin text-primary border-2 border-primary text-3xl bg-secondary hover:bg-primary hover:text-secondary py-2 px-4 rounded"
-            v-on:click="loadIssues"
-            :disabled="isFetching"
-          >
-            {{ isFetching ? `Loading...` : `View more` }}
+        <div class="flex flex-row items-center">
+          <button class="text-primary text-lg font-semibold uppercase">
+            Filter by language
           </button>
         </div>
-      </section>
+      </header>
 
-      <footer class="container mx-auto mt-16 p-8">
-        <p class="text-white text-center font-thin ">
-          Unofficial site created by
-          <a class="text-white" href="http://duncan.mcclean.co.uk"
-            >Duncan McClean</a
+      <div class="mb-8 flex justify-end filter">
+        <div v-if="isFilterToggled" class="filter-values flex">
+          <button
+            v-for="language in languages"
+            class="font-thin text-primary text-1xl m-2 language"
+            :text="language"
+            @click="chooseLanguage(language)"
           >
-          and
-          <a
-            class="text-white"
-            href="https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md"
-            >contributors</a
-          >.
-        </p>
+          </button>
+        </div>
+      </div>
 
-        <p class="text-white text-center font-thin mt-2">
+      <main class="container mx-auto my-12">
+        <div id="results" class="grid">
           <a
-            class="text-white"
-            href="https://github.com/damcclean/hacktoberfest-finder"
+            v-for="result in results"
+            class="bg-white hover:bg-grey-lighter rounded-lg p-2 text-black flex flex-col justify-center items-center overflow-auto shadow-lg"
+            target="_blank"
+            :href="result.html_url"
+            :title="result.title"
           >
-            Help on GitHub!
-          </a>
-        </p>
-
-        <div class="mt-4 flex items-center justify-center">
-          <a class="m-2" href="https://www.digitalocean.com/">
-            <img src="/assets/images/digital-ocean.png" />
-          </a>
-          <a class="m-2" href="https://dev.to/">
-            <img src="/assets/images/dev.svg" />
+            <h2 class="text-center text-3xl mb-4">{{ result.title }}</h2>
+            <h3 class="text-center text-blue mb-4 break-words">{{ result.user.login }}/{{ result.repoTitle }}</h3>
           </a>
         </div>
-      </footer>
+
+        <div v-if="showViewMore" class="flex flex-row items-center justify-center mt-6">
+          <button
+            class="font-thin text-primary border-2 border-primary text-3xl bg-secondary hover:bg-primary hover:text-secondary py-2 px-4 rounded"
+            :disabled="isFetching"
+            @click="loadIssues"
+          >
+            {{ isFetching ? 'Loading...' : 'Load More' }}
+          </button>
+        </div>
+      </main>
     </div>
+
+    <footer class="bg-primary w-full mt-8">
+      <div class="container mx-auto flex flex-row items-center justify-between p-8">
+        <p class="text-amber">Unofficial site by <a class="text-secondary" href="http://duncan.mcclean.co.uk">Duncan McClean</a> and <a class="text-secondary" href="https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md">contributors</a>.</p>
+
+        <div class="flex flex-row items-center justify-center">
+          <a class="mx-2" href="https://www.digitalocean.com">
+            <img class="w-6 h-6" src="/assets/images/digital-ocean.png">
+          </a>
+
+          <a class="mx-2" href="https://dev.to">
+            <img class="w-6 h-6" src="/assets/images/dev.svg">
+          </a>
+        </div>
+      </div>
+    </footer>
+
     <script src="/build/app.js"></script>
     <script>
       if ('serviceWorker' in navigator) {

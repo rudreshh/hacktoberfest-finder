@@ -15,10 +15,10 @@ module.exports = {
       black: "#22292f",
       white: "#ffffff",
 
+      primary: "#A11EC6",
       secondary: "#152347",
       amber: "#FF9A56",
-      blue: "#2B81D9",
-      primary: "#A11EC6"
+      blue: "#2B81D9"
     },
     spacing: {
       px: '1px',
@@ -125,6 +125,9 @@ module.exports = {
         "Droid Sans",
         "Helvetica Neue",
         "sans-serif"
+      ],
+      mono: [
+        '"Space Mono"'
       ]
     },
     fontSize: {
