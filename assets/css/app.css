@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.headline {
-  font-family: 'Sailec-Bold', system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+@font-face {
+  font-family: 'Space Mono';
+  src: url('/assets/fonts/SpaceMono-Regular.woff2') format('woff2'),
+    url('/assets/fonts/SpaceMono-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .grid {
@@ -16,14 +19,14 @@
 .filter-language {
   font-weight: lighter;
   font-size: 1.2em;
-  margin-top: 35px;
+  margin-top: 30px;
 }
 @media (max-width: 991px) {
   .filter-language {
     margin-top: 20px;
   }
 }
-@media (max-width: 443px) {
+@media (max-width: 768px) {
   .filter-language {
     width: 100%;
     text-align: center;
@@ -52,36 +55,23 @@
   grid-template-columns: repeat(3, calc((100% - 40px) / 3));
 }
 
-@font-face {
-  font-family: Squealer;
-  src: url('/assets/fonts/squealer.ttf');
-}
-
 .font {
-  font-family: Squealer;
-  font-size: 2.2rem;
+  font-family: 'Space Mono';
+  font-size: 2rem;
 }
-/* @media (min-width: 576px) {
-  .font {
-    font-size: 2.4rem;
-  }
-} */
 @media (min-width: 992px) {
   .font {
     font-size: 3.2rem;
   }
 }
+
 .header {
   justify-content: space-between;
   align-items: flex-start;
   padding: 0 20px;
   flex-flow: column;
 }
-/* @media (min-width: 576px) {
-  .header {
-    flex-flow: row;
-  }
-} */
+
 @media (min-width: 992px) {
   .header {
     flex-flow: row;
@@ -90,21 +80,24 @@
 
 .header h1 {
   padding-left: 16px;
-  margin-top: 11px;
+  margin-top: 5px;
+  color: white;
 }
 @media (max-width: 991px) {
   .header h1 {
     margin-top: 5px;
-    padding-left: 0;
-  }
-}
-@media (max-width: 991px) {
-  .header img {
-    width: 200px;
+    padding-left: 8px;
   }
 }
 
-@media (max-width: 443px) {
+@media (max-width: 768px) {
+  .header h1 {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
   .site-name {
     flex-flow: column;
     align-items: center;
@@ -120,7 +113,7 @@
     justify-content: flex-start;
   }
 }
-@media (max-width: 443px) {
+@media (max-width: 768px) {
   .filter {
     justify-content: center;
   }
