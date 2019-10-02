@@ -15,9 +15,9 @@ If you want to get Hacktoberfest Finder setup on your computer, you'll need:
 
 If you've got everything, you can install it by following the below steps.
 
-1. Fork and clone this repository to your computer
-2. Run `npm install` in the project folder
-3. Then run `npm run dev` to compile JS and SASS for development.
+1. Fork and clone this repository to your computer.
+2. Run `yarn install` or `npm install` in the project folder.
+3. Then run `yarn run dev` or `npm run dev` to compile JavaScript and PostCSS stylesheets for development.
 
 ## Contributing
 
