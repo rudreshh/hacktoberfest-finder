@@ -9,6 +9,7 @@
 - [SARAN-thala](https://github.com/SARAN-thala)
 - [wooojek](https://github.com/wooojek)
 - [vanya829](https://github.com/vanya829)
+- [deadSnowman](https://github.com/deadSnowman)
 
 ## 2018
 
