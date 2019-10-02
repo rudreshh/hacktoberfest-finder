@@ -263,6 +263,9 @@ module.exports = {
       current: 'currentColor',
     },
     textColor: theme => theme('colors'),
+    inset: {
+      '2r': '2rem'
+    },
     width: {
       auto: "auto",
       px: "1px",
