@@ -4,17 +4,24 @@
 
 @font-face {
   font-family: 'Space Mono';
-  src: url('/assets/fonts/SpaceMono-Regular.woff2') format('woff2'),
-    url('/assets/fonts/SpaceMono-Regular.woff') format('woff');
-  font-weight: normal;
+  src: url('/assets/fonts/SpaceMono-Bold.woff2') format('woff2'),
+    url('/assets/fonts/SpaceMono-Bold.woff') format('woff');
+  font-weight: bold;
   font-style: normal;
 }
 
 .grid {
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(1, 100%);
+  grid-template-columns:
+    calc(33.333333% - 13.333333px) calc(33.333333% - 13.333333px)
+    calc(33.333333% - 13.333333px);
   margin: 0 20px;
+}
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 100%;
+  }
 }
 .filter-language {
   font-weight: lighter;

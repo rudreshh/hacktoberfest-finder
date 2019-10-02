@@ -7,49 +7,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta
-      name="description"
-      content="Hacktoberfest Finder helps you find issues which you could help fix."
-    />
-    <meta
-      name="keywords"
-      content="Hacktoberfest, Programming, GitHub, DigitalOcean, Twilio"
-    />
+    <meta name="description" content="Hacktoberfest Finder helps you find issues which you could help fix." />
+    <meta name="keywords" content="Hacktoberfest, Programming, GitHub, DigitalOcean, DEV" />
     <meta name="author" content="Duncan McClean and Contributors" />
-    <meta property="og:title" content="Hacktoberfest 2018 Finder" />
-    <meta
-      property="og:description"
-      content="Hacktoberfest Finder helps you find issues which you could help fix."
-    />
+    <meta property="og:title" content="Hacktoberfest 2019 Finder" />
+    <meta property="og:description" content="Hacktoberfest Finder helps you find issues which you could help fix." />
     <meta property="og:image" content="" />
-    <meta
-      property="og:url"
-      content="https://hacktoberfest-finder.netlify.com/"
+    <meta property="og:url" content="https://hacktoberfest-finder.netlify.com/"
     />
 
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/assets/images/favicons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/images/favicons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/images/favicons/favicon-16x16.png"
-    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png" />
     <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
-    <link
-      rel="mask-icon"
-      href="/assets/images/favicons/safari-pinned-tab.svg"
-      color="#5bbad5"
-    />
+    <link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#6b3d53" />
     <meta name="theme-color" content="#582d41" />
   </head>
@@ -92,7 +63,7 @@
         <div class="results grid">
           <a
             v-for="result in results"
-            class="result bg-white p-2 rounded text-black no-underline issue-box"
+            class="result bg-white p-2 rounded text-black no-underline issue-box max-w-sm rounded overflow-hidden shadow-lg"
             :href="result.html_url"
             :title="result.title"
             target="_blank"
