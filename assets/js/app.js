@@ -1,3 +1,5 @@
+const emojis = require('./emojis');
+
 /**
     Require dependencies
 */
@@ -7,6 +9,32 @@ window.Vue = require('vue');
 /**
     Create a Vue instance
 */
+const emojisMap = emojis.reduce((acc, emoji) => {
+  acc[emoji.shortname] = emoji.html
+  return acc
+}, {})
+
+Vue.component('github-label', {
+  props: ['labelText'],
+  template: '<span v-html="text"></span>',
+  computed: {
+    text: function () {
+      return this.translateEmojis(this.labelText)
+    }
+  },
+  methods: {
+    translateEmojis(text) {
+      const emojiRegex = /(:[a-z_]+:)/g;
+      const emojiShortnames = text.match(emojiRegex);
+      let result = text;
+
+      if (emojiShortnames && emojiShortnames.length > 0) {
+        emojiShortnames.forEach((shortname) => result = result.replace(shortname, emojisMap[shortname]));
+      }
+      return result
+    }
+  }
+})
 
 const app = new Vue({
     el: '#app',
@@ -48,9 +76,11 @@ const app = new Vue({
                         ...response.items
                     ];
 
-                    this.results.forEach(element => {
-                        element.repoTitle = element.repository_url.split('/').slice(-1).join();
-                    });
+                    this.results = this.results.map(({repository_url, updated_at, ...rest}) => ({
+                      ...rest,
+                      repoTitle: repository_url.split('/').slice(-1).join(),
+                      formattedDate: `${new Date(updated_at).toLocaleDateString()}, ${new Date(updated_at).toLocaleTimeString()}`
+                    }));
                     this.page = this.page + 1;
                     this.showViewMore = true;
                     this.isFetching = false;
