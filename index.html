@@ -26,45 +26,49 @@
 
   <body class="bg-secondary font-space">
     <div id="app">
-      <header class="container mx-auto my-6 flex flex-row justify-between">
-        <div class="flex flex-row items-center">
-          <img src="/assets/images/header.svg" alt="Hacktoberfest 2019" width="400px">
+      <header class="container mx-auto my-6 flex flex-row flex-wrap justify-between">
+        <div class="flex flex-row flex-wrap items-center">
+          <img class="mx-auto" src="/assets/images/header.svg" alt="Hacktoberfest 2019" width="400px">
 
-          <h1 class="text-5xl font-bold text-primary uppercase">
+          <h1 class="text-5xl font-bold text-primary uppercase mx-auto my-4 md:my-0 text-center">
             Issue Finder
           </h1>
         </div>
 
-        <div class="flex flex-row items-center">
-          <button class="text-primary text-lg font-semibold uppercase">
-            Filter by language
+        <div class="w-full md:w-auto flex flex-row flex-wrap items-center justify-around mx-auto my-4">
+          <div class="flex flex-column items-center filter relative">
+            <button class="text-primary text-lg font-semibold uppercase relative focus:outline-none" @click="toggleFilter">
+              Filter by language
+            </button>
+            <div v-if="isFilterToggled" class="filter-values flex flex-col bg-primary absolute top-2r right-0 mt-2 w-48 shadow-xl rounded-lg overflow-hidden border-2 border-primary border-solid">
+              <button
+                v-for="language in languages"
+                class="font-thin text-secondary text-1xl p-2 language bg-primary hover:bg-secondary hover:text-white"
+                :text="language"
+                @click="chooseLanguage(language)"
+              >
+              {{ language }}
+              </button>
+            </div>
+          </div>
+          <button class="text-primary text-lg font-semibold uppercase mx-2" @click="toggleNoReplyFilter()">
+            Filter by no reply
           </button>
         </div>
       </header>
-
-      <div class="mb-8 flex justify-end filter">
-        <div v-if="isFilterToggled" class="filter-values flex">
-          <button
-            v-for="language in languages"
-            class="font-thin text-primary text-1xl no-underline m-2 language"
-            :text="language"
-            @click="chooseLanguage(language)"
-          >
-          </button>
-        </div>
-      </div>
 
       <main class="container mx-auto my-12">
         <div id="results" class="grid">
           <a
             v-for="result in results"
-            class="bg-white hover:bg-grey-lighter rounded-lg p-2 text-black no-underline flex flex-col justify-center items-center overflow-auto shadow-lg"
+            class="bg-white hover:bg-grey-lighter rounded-lg p-2 text-black flex flex-col justify-center items-center overflow-auto shadow-lg"
             target="_blank"
             :href="result.html_url"
             :title="result.title"
           >
             <h2 class="text-center text-3xl mb-4">{{ result.title }}</h2>
             <h3 class="text-center text-blue mb-4 break-words">{{ result.user.login }}/{{ result.repoTitle }}</h3>
+            <span>Comments: {{result.comments}}</span>
           </a>
         </div>
 
@@ -88,11 +92,11 @@
         </div>
 
         <div class="flex flex-row items-center justify-center">
-          <a class="mx-2" href="https://www.digitalocean.com">
+          <a class="mx-2 w-6 h-6" href="https://www.digitalocean.com">
             <img class="w-6 h-6" src="/assets/images/digital-ocean.png">
           </a>
 
-          <a class="mx-2" href="https://dev.to">
+          <a class="mx-2 w-6 h-6" href="https://dev.to">
             <img class="w-6 h-6" src="/assets/images/dev.svg">
           </a>
         </div>

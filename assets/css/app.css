@@ -2,7 +2,16 @@
   TailwindCSS
 */
 
-@tailwind preflight;
+@tailwind base;
+ul {
+  list-style-type: disc;
+  padding-left: theme('padding.4');
+}
+
+ol {
+  list-style-type: decimal;
+  padding-left: theme('padding.4');
+}
 @tailwind components;
 @tailwind utilities;
 
@@ -32,7 +41,7 @@
   .grid {
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-gap: config('padding.4');
+    grid-gap: theme('padding.4');
 
     a {
       height: 250px;
