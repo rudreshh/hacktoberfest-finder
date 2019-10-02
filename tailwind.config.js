@@ -264,7 +264,8 @@ module.exports = {
     },
     textColor: theme => theme('colors'),
     inset: {
-      '2r': '2rem'
+      '2r': '2rem',
+      '4r': '4rem'
     },
     width: {
       auto: "auto",
