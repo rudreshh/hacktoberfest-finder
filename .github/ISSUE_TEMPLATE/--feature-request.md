@@ -2,7 +2,7 @@
 name: "✨ Feature request"
 about: Have a feature request? Add it here and we'll accept it.
 title: "✨"
-labels: hacktoberfest
+labels: hacktoberfest, enhancement
 assignees: ''
 
 ---
