@@ -6,6 +6,11 @@
 
 [Hacktoberfest](https://hacktoberfest.digitalocean.com/) is a festival run by Digital Ocean and .dev encourages people to participate in the open-source software community.
 
+## Tech Stack
+
+* [Tailwind CSS](http://tailwindcss.com)
+* [Vuejs](https://vuejs.org/)
+
 ## 💻 Local Setup
 
 If you want to get Hacktoberfest Finder setup on your computer, you'll need:
