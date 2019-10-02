@@ -1,5 +1,14 @@
 # Contributors
 
+## 2019
+
+- [Kristiyan](https://github.com/kristiyan-ASW-G-08)
+- [dennypradipta](https://github.com/dennypradipta)
+- [kev1nboer](https://github.com/kev1nboer)
+- [audrius59](https://github.com/audrius59)
+- [SARAN-thala](https://github.com/SARAN-thala)
+- [vanya829](https://github.com/vanya829)
+
 ## 2018
 
 - [damcclean](https://github.com/damcclean)
@@ -22,11 +31,3 @@
 - [katilius](https://github.com/katilius)
 - [movd](https://github.com/movd)
 - [xeBuz](https://github.com/xeBuz)
-
-## 2019
-
-- [Kristiyan](https://github.com/kristiyan-ASW-G-08)
-- [dennypradipta](https://github.com/dennypradipta)
-- [kev1nboer](https://github.com/kev1nboer)
-- [audrius59](https://github.com/audrius59)
-- [vanya829](https://github.com/vanya829)

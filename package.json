@@ -7,14 +7,14 @@
   },
   "dependencies": {
     "laravel-mix": "^5.0.0",
-    "laravel-mix-purgecss": "^4.1.0",
-    "tailwindcss": "^0.6.6",
+    "laravel-mix-purgecss": "^4.2.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
     "cross-env": "6.0.2",
     "laravel-mix-postcss-config": "^1.0.2",
     "postcss-nested": "^4.1.2",
+    "tailwindcss": "^1.1.2",
     "vue-template-compiler": "^2.6.10"
   }
 }
