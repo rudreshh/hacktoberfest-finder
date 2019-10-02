@@ -43,14 +43,14 @@
       </header>
 
       <div class="mb-8 flex justify-end filter">
-        <div v-if="isFilterToggled" class="filter-values flex">
+        <div v-if="isFilterToggled" class="filter-values flex bg-primary">
           <button
             v-for="language in languages"
-            class="font-thin text-primary text-1xl m-2 language"
+            class="font-thin text-secondary text-1xl m-2 language"
             :text="language"
             @click="() => chooseLanguage(language)"
           >
-          {{language}}
+          {{ language }}
           </button>
         </div>
       </div>
