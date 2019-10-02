@@ -7,6 +7,7 @@
 - [kev1nboer](https://github.com/kev1nboer)
 - [audrius59](https://github.com/audrius59)
 - [SARAN-thala](https://github.com/SARAN-thala)
+- [vanya829](https://github.com/vanya829)
 
 ## 2018
 
