@@ -48,9 +48,11 @@ const app = new Vue({
                         ...response.items
                     ];
 
-                    this.results.forEach(element => {
-                        element.repoTitle = element.repository_url.split('/').slice(-1).join();
-                    });
+                    this.results = this.results.map(({repository_url, updated_at, ...rest}) => ({
+                      ...rest,
+                      repoTitle: repository_url.split('/').slice(-1).join(),
+                      formattedDate: `${new Date(updated_at).toLocaleDateString()}, ${new Date(updated_at).toLocaleTimeString()}`
+                    }));
                     this.page = this.page + 1;
                     this.showViewMore = true;
                     this.isFetching = false;
