@@ -12,6 +12,11 @@ ol {
   list-style-type: decimal;
   padding-left: theme('padding.4');
 }
+
+input {
+  text-align: center;
+}
+
 @tailwind components;
 @tailwind utilities;
 
