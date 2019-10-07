@@ -12,6 +12,7 @@ ol {
   list-style-type: decimal;
   padding-left: theme('padding.4');
 }
+
 @tailwind components;
 @tailwind utilities;
 

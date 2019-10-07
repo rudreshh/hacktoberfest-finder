@@ -11,6 +11,7 @@
 - [vanya829](https://github.com/vanya829)
 - [MrEvertide](https://github.com/mrevertide)
 - [deadSnowman](https://github.com/deadSnowman)
+- [danstewart](https://github.com/danstewart)
 
 ## 2018
 
