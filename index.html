@@ -71,8 +71,9 @@
             <span v-for="label in result.labels" class="rounded-sm px-2 py-1 m-1 shadow-md" :style="{backgroundColor: '#' + label.color}">{{ label.name }}</span>
           </div>
             <h2 class="text-center text-xl mb-4">{{ result.title }}</h2>
-            <h3 class="text-center text-blue mb-4 break-words">{{ result.user.login }}/{{ result.repoTitle }}</h3>
+            <h3 class="text-center text-blue mb-4 break-words">{{ result.repoTitle }}</h3>
             <span>Comments: {{ result.comments }}</span>
+            <span>Opened by: {{ result.user.login }}</span>
             <span>Last updated: {{ result.formattedDate }}</span>
           </a>
         </div>

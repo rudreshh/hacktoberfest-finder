@@ -43,16 +43,19 @@ const app = new Vue({
             fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open+${this.noReplyOnly && 'comments:0'}`)
                 .then(response => response.json())
                 .then(response => {
-                    this.results = [
-                        ...this.results,
-                        ...response.items
-                    ];
 
-                    this.results = this.results.map(({repository_url, updated_at, ...rest}) => ({
+                    let newResults = response.items.map(({repository_url, updated_at, ...rest}) => ({
                       ...rest,
-                      repoTitle: repository_url.split('/').slice(-1).join(),
+                      repoTitle: repository_url.split('/').slice(-2).join('/'),
+                      repository_url: repository_url,
                       formattedDate: `${new Date(updated_at).toLocaleDateString()}, ${new Date(updated_at).toLocaleTimeString()}`
                     }));
+
+                    this.results = [
+                        ...this.results,
+                        ...newResults
+                    ];
+
                     this.page = this.page + 1;
                     this.showViewMore = true;
                     this.isFetching = false;
