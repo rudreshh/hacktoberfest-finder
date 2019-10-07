@@ -13,10 +13,6 @@ ol {
   padding-left: theme('padding.4');
 }
 
-.text-center {
-  text-align: center;
-}
-
 @tailwind components;
 @tailwind utilities;
 
