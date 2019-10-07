@@ -97,7 +97,7 @@ const app = new Vue({
 
         closeLanguageSearch(event) {
             this.resetTopLanguages();
-            this.isFilterToggled = !this.isFilterToggled;
+            this.isFilterToggled = false;
         },
 
         toggleFilter() {
@@ -132,7 +132,7 @@ const app = new Vue({
         // within that, then close the filter
         onClickOutside(event) {
             if (event.target.id !== "toggleFilter" && event.target.id !== "languageSearch") {
-                this.isFilterToggled = false;
+                this.closeLanguageSearch();
              }
         }
     },
