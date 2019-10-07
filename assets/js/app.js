@@ -87,7 +87,12 @@ const app = new Vue({
 
         searchLanguages(event) {
             let searched = event.target.value;
-            this.topLanguages = this.languages.filter(lang => lang.toLowerCase().indexOf(searched.toLowerCase()) > -1);
+
+            if (searched.length === 0) {
+                this.resetTopLanguages();
+            } else {
+                this.topLanguages = this.languages.filter(lang => lang.toLowerCase().indexOf(searched.toLowerCase()) > -1);
+            }
         },
 
         closeLanguageSearch(event) {
