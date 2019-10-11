@@ -43,12 +43,16 @@ const app = new Vue({
         loadIssues() {
             this.isFetching = true;
 
-            fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open+${this.noReplyOnly && 'comments:0'}`)
-                .then(response => response.json())
-                .then(response => {
-
-                    let newResults = response.items.map(({repository_url, updated_at, ...rest}) => ({
-                      ...rest,
+			const issuesFetch = `https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open+${this.noReplyOnly && 'comments:0'}`;
+			const emojisFetch = 'https://api.github.com/emojis';
+			Promise.all([issuesFetch, emojisFetch].map(url => fetch(url).then(response => response.json())))
+                .then(([issuesResponse, emojis]) => {
+					let newResults = issuesResponse.items.map(({repository_url, updated_at, labels, ...rest}) => ({
+					  ...rest,
+					  labels: labels.map(label => ({
+						  ...label,
+						  parsedName: this.insertEmojis(label.name, emojis)
+						})),
                       repoTitle: repository_url.split('/').slice(-2).join('/'),
                       repository_url: repository_url,
                       formattedDate: `${new Date(updated_at).toLocaleDateString()}, ${new Date(updated_at).toLocaleTimeString()}`
@@ -63,14 +67,21 @@ const app = new Vue({
                     this.showViewMore = true;
                     this.isFetching = false;
 
-                    if (response.items.length === 0) { // case when all the issues are already loaded
+                    if (issuesResponse.items.length === 0) { // case when all the issues are already loaded
                       this.showViewMore = false;
                     }
                 }).catch(error => {
                     this.showViewMore = false;
                     this.isFetching = false;
                 });
-        },
+		},
+		
+		insertEmojis(label, emojis) {
+			for (let [emoji, url] of Object.entries(emojis)) {
+				label = label.replace(`:${emoji}:`, `<img src="${url}" class="h-4" />`);
+			}
+			return label;
+		},
 
         chooseLanguage(language) {
             if (language.target) {
