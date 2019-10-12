@@ -12,6 +12,7 @@
 - [MrEvertide](https://github.com/mrevertide)
 - [deadSnowman](https://github.com/deadSnowman)
 - [danstewart](https://github.com/danstewart)
+- [ElkeBxl](https://github.com/elkebxl)
 
 ## 2018
 
