@@ -43,10 +43,13 @@ const app = new Vue({
         loadIssues() {
             this.isFetching = true;
 
-			const issuesFetch = `https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open+${this.noReplyOnly && 'comments:0'}`;
-			const emojisFetch = 'https://api.github.com/emojis';
-			Promise.all([issuesFetch, emojisFetch].map(url => fetch(url).then(response => response.json())))
-                .then(([issuesResponse, emojis]) => {
+			let emojis = [];
+			fetch('https://api.github.com/emojis')
+				.then(response => response.json())
+				.then(emojisResponse => emojis = emojisResponse)
+				.then(() => fetch(`https://api.github.com/search/issues?page=${this.page}&q=language:${this.filterLanguage}+label:hacktoberfest+type:issue+state:open+${this.noReplyOnly && 'comments:0'}`))
+				.then(response => response.json())
+                .then(issuesResponse => {
 					let newResults = issuesResponse.items.map(({repository_url, updated_at, labels, ...rest}) => ({
 					  ...rest,
 					  labels: labels.map(label => ({
