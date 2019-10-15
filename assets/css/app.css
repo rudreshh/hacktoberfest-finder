@@ -36,6 +36,10 @@ ol {
   a {
     @apply my-2;
   }
+
+  img {
+    @apply inline w-5;
+  }
 }
 
 @screen md {
