@@ -13,6 +13,7 @@
 - [deadSnowman](https://github.com/deadSnowman)
 - [danstewart](https://github.com/danstewart)
 - [ElkeBxl](https://github.com/elkebxl)
+- [Milap](https://github.com/milap1296)
 
 ## 2018
 
