@@ -6,7 +6,7 @@
     "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "dependencies": {
-    "laravel-mix": "^5.0.0",
+    "laravel-mix": "^5.0.4",
     "laravel-mix-purgecss": "^4.2.0",
     "vue": "^2.6.11"
   },
