@@ -1,5 +1,9 @@
 # Contributors
 
+## 2020
+
+- [liorbentov](https://github.com/liorbentov)
+
 ## 2019
 
 - [Kristiyan](https://github.com/kristiyan-ASW-G-08)
