@@ -1,30 +1,15 @@
 # Hacktoberfest Finder
 
-> Web app to make it easy to find Github issues with the tag 'Hacktoberfest'.
+[Hacktoberfest Finder](https://hacktoberfest-finder.netlify.app/) is a project to help developers find projects they can help out on during the month of Hacktoberfest (October). 
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/bf2c479d-fcaf-4c46-b1ad-dccf2cc4e988/deploy-status)](https://app.netlify.com/sites/hacktoberfest-finder/deploys)
+This is an un-official project, not assosiated with DigitalOcean, Intel or DEV. It's maintained by [Duncan McClean](https://duncanm.dev).
 
-## ❓ What is Hacktoberfest?
+## Local Installation
 
-[Hacktoberfest](https://hacktoberfest.digitalocean.com/) is a festival run by Digital Ocean and .dev encourages people to participate in the open-source software community.
-
-## Tech Stack
-
-* [Tailwind CSS](http://tailwindcss.com)
-* [Vuejs](https://vuejs.org/)
-
-## 💻 Local Setup
-
-If you want to get Hacktoberfest Finder setup on your computer, you'll need:
-
-* Node
-* npm/yarn
-
-If you've got everything, you can install it by following the below steps.
-
-1. Fork and clone this repository to your computer.
-2. Run `yarn install` or `npm install` in the project folder.
-3. Then run `yarn run dev` or `npm run dev` to compile JavaScript and PostCSS stylesheets for development.
+1. Fork this repository
+2. Clone your fork to your computer.
+3. Run `npm install` in the cloned folder.
+4. Then compile assets with `npm run dev` or watch for asset changes with `npm run watch`.
 
 ## Contributing
 
@@ -32,6 +17,6 @@ Please read [CONTRIBUTING.md](https://github.com/damcclean/hacktoberfest-finder/
 
 If you are a first time contributor, please add your name to [CONTRIBUTORS.md](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md)
 
-## 👥 Contributors
+## Contributors
 
 You can find a list of contributors to this project in the [`CONTRIBUTORS.md`](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md) file.
