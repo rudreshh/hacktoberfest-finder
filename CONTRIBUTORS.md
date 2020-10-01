@@ -3,6 +3,7 @@
 ## 2020
 
 - [liorbentov](https://github.com/liorbentov)
+- [agonzalezio](https://github.com/agonzalezio)
 
 ## 2019
 
