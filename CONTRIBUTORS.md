@@ -3,7 +3,8 @@
 ## 2020
 
 - [liorbentov](https://github.com/liorbentov)
-- [TicTak21](https://github.com/TicTak21)
+- [agonzalezio](https://github.com/agonzalezio)
+- [TicTak21](https://github.com/TicTak21
 
 ## 2019
 
