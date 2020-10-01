@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Hacktoberfest Finder</title>
-    <link rel="stylesheet" href="/build/app.css" />
 
+<head>
+    <title>Hacktoberfest Finder</title>
+    <link rel="stylesheet" href="/css/app.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -12,111 +12,127 @@
     <meta name="author" content="Duncan McClean and Contributors" />
     <meta property="og:title" content="Hacktoberfest 2019 Finder" />
     <meta property="og:description" content="Hacktoberfest Finder helps you find issues which you could help fix." />
-    <meta property="og:image" content="https://hacktoberfest-finder.netlify.com/assets/images/issuefinder.png" />
+    <meta property="og:image" content="https://hacktoberfest-finder.netlify.com/img/issuefinder.png" />
     <meta property="og:url" content="https://hacktoberfest-finder.netlify.com/" />
     <meta name="twitter:title" content="Hacktoberfest Finder">
-    <meta name="twitter:image" content="https://hacktoberfest-finder.netlify.com/assets/images/issuefinder.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png" />
-    <link rel="manifest" href="/assets/images/favicons/site.webmanifest" />
-    <link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="twitter:image" content="https://hacktoberfest-finder.netlify.com/img/issuefinder.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="/img/favicons/site.webmanifest" />
+    <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#6b3d53" />
     <meta name="theme-color" content="#582d41" />
-  </head>
+</head>
 
-  <body class="bg-secondary font-space">
+<body class="bg-secondary font-space">
     <div id="app">
-      <header class="container mx-auto my-6 flex flex-row flex-wrap justify-between">
-        <div class="flex flex-row flex-wrap items-center">
-          <img class="mx-auto" src="/assets/images/header.svg" alt="Hacktoberfest 2019" width="400px">
+        <header class="bg-gray-200">
+            <div class="py-8">
+                <div class="container mx-auto flex items-center justify-between">
+                    <a href="/">
+                        <img
+                            class="h-24"
+                            src="/img/hacktoberfest.svg"
+                            alt="Hacktoberfest Icon"
+                        >
+                    </a>
 
-          <h1 class="text-5xl font-bold text-primary uppercase mx-auto my-4 md:my-0 text-center">
-            Issue Finder
-          </h1>
-        </div>
-
-        <div class="w-full md:w-auto flex flex-row flex-wrap items-center justify-around mx-auto my-4">
-          <div class="flex flex-column items-center filter relative">
-            <button id="toggleFilter" class="text-primary text-lg font-semibold uppercase relative focus:outline-none" @click="toggleFilter">
-              Filter by language
-            </button>
-            <div v-if="isFilterToggled" class="filter-values flex flex-col bg-primary absolute top-2r right-0 mt-2 w-48 shadow-xl rounded-lg overflow-hidden border-2 border-primary border-solid">
-
-              <input id="languageSearch" class="text-center" placeholder="Search" @keyup.enter="chooseLanguage" @input="searchLanguages" @keyup.esc="closeLanguageSearch" />
-
-              <button
-                v-for="language in topLanguages"
-                class="font-thin text-secondary text-1xl p-2 language bg-primary hover:bg-secondary hover:text-white"
-                :text="language"
-                @click="chooseLanguage(language)"
-              >
-              {{ language }}
-              </button>
+                    <div>
+                        <a
+                            class="bg-hacktoberfest-blue hover:bg-hacktoberfest-orange text-white rounded-full px-6 py-3 uppercase font-medium"
+                            href="https://github.com/damcclean/hacktoberfest-finder"
+                        >Contribute</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <button class="text-primary text-lg font-semibold uppercase mx-2" @click="toggleNoReplyFilter()">
-            Filter by no reply
-          </button>
-        </div>
-      </header>
 
-      <main class="container mx-auto my-12">
-        <div id="results" class="grid">
-          <a
-            v-for="result in results"
-            class="bg-white hover:bg-grey-lighter rounded-lg p-2 text-black flex flex-col justify-center items-center overflow-auto shadow-lg"
-            target="_blank"
-            :href="result.html_url"
-            :title="result.title"
-          >
-            <h2 class="text-center text-xl mb-4">{{ result.title }}</h2>
-            <h3 class="text-center text-blue mb-4 break-words">{{ result.repoTitle }}</h3>
-            <span>Comments: {{ result.comments }}</span>
-            <div class="flex flex-wrap flex-row w-full">
-              <span v-for="label in result.labels" class="rounded-sm px-2 py-1 m-1 shadow-md" :style="{backgroundColor: '#' + label.color}" v-html="label.parsedName"></span>
+            <div class="max-w-xl mx-auto pb-20">
+                <h1 class="text-center text-5xl font-bold mb-8">Find issues to help with during <span class="text-hacktoberfest-orange">Hacktoberfest</span></h1>
+
+                <form action="#">
+                    <div class="w-full bg-white rounded-lg px-4 py-3 flex">
+                        <div class="relative w-1/2 pr-2 border-r border-gray-200">
+                            <select
+                                v-model="selectedLanguage"
+                                class="block appearance-none w-full bg-white px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
+                            >
+                                <option
+                                    selected
+                                    value="any"
+                                >Any language</option>
+                                <option
+                                    v-for="language in languages"
+                                    :key="language"
+                                    v-text="language"
+                                    :value="language"
+                                ></option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="relative w-1/2 pl-2">
+                            <select
+                                v-model="selectedSort"
+                                class="block appearance-none w-full bg-white px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
+                            >
+                                <option
+                                    selected
+                                    value="newest"
+                                >Newest</option>
+                                <option
+                                    selected
+                                    value="newest"
+                                >No Replies</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <span>Opened by: {{ result.user.login }}</span>
-            <span>Last updated: {{ result.formattedDate }}</span>
-          </a>
-        </div>
+        </header>
 
-        <div v-if="showViewMore" class="flex flex-row items-center justify-center mt-6">
-          <button
-            class="font-thin text-primary border-2 border-primary text-3xl bg-secondary hover:bg-primary hover:text-secondary py-2 px-4 rounded"
-            :disabled="isFetching"
-            @click="loadIssues"
-          >
-            {{ isFetching ? 'Loading...' : 'Load More' }}
-          </button>
-        </div>
-      </main>
+        <main>
+            <div class="container mx-auto py-12">
+                <div class="issue-grid">
+                    <a
+                        v-for="result in results"
+                        class="border border-gray-200 p-4 shadow-sm"
+                        target="_blank"
+                        :href="result.html_url"
+                        :title="result.title"
+                    >
+                        <h2 class="text-lg font-semibold mb-2" v-text="result.title"></h2>
+                        <h3 class="text-sm font-medium mb-4" v-text="result.repoTitle"></h3>
+
+                        <p class="text-sm">{{ result.comments }} comments</p>
+                    </a>
+                </div>
+
+                <div v-if="showViewMore" class="flex items-center justify-center my-6">
+                    <button
+                        class="bg-hacktoberfest-blue hover:bg-hacktoberfest-orange text-white rounded-full px-6 py-3 uppercase font-medium"
+                        :disabled="isFetching"
+                        @click="loadIssues"
+                    >
+                        {{ isFetching ? 'Loading' : 'Load More' }}
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-gray-200 py-6">
+            <div class="container mx-auto">
+                <p class="text-sm">Hacktoberfest Finder is not assosiated with DigitalOcean, Intel or DEV. It's an unofficial project maintained by <a class="font-medium text-hacktoberfest-blue" href="https://duncanm.dev?ref=hacktoberfest">Duncan McClean</a> with help of <a class="font-medium text-hacktoberfest-blue" href="https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md">open source contributors</a>.</p>
+            </div>
+        </footer>
     </div>
 
-    <footer class="bg-primary w-full mt-8">
-      <div class="container mx-auto flex flex-row items-center justify-between p-8">
-        <div class="flex flex-row items-center justify-center">
-          <p class="text-amber">Unofficial site by <a class="text-secondary" href="http://duncan.mcclean.co.uk">Duncan McClean</a> and <a class="text-secondary" href="https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md">contributors</a>. Contribute on <a class="text-secondary" href="https://github.com/damcclean/hacktoberfest-finder" target="_blank">GitHub!</a></p>
-        </div>
+    <script src="/js/app.js"></script>
+</body>
 
-        <div class="flex flex-row items-center justify-center">
-          <a class="mx-2 w-6 h-6" href="https://www.digitalocean.com">
-            <img class="w-6 h-6" src="/assets/images/digital-ocean.png">
-          </a>
-          <a class="mx-2 w-6 h-6" href="https://dev.to">
-            <img class="w-6 h-6" src="/assets/images/dev.svg">
-          </a>
-        </div>
-      </div>
-    </footer>
-
-    <script src="/build/app.js"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js').then(function() {
-          console.log('Service Worker is now registered');
-        });
-      }
-    </script>
-  </body>
 </html>

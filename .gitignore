@@ -6,4 +6,6 @@ node_modules
 package-lock.json
 mix-manifest.json
 
-!build/.gitkeep
+css/*.css
+js/*.js
+mix-manifest.json
