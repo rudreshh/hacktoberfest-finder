@@ -31,7 +31,7 @@ new Vue({
                 .then(() =>
                     fetch(
                         `https://api.github.com/search/issues?page=${this.page
-                        }&q=language:${this.filterLanguage
+                        }&q=language:${this.selectedLanguage
                         }+label:hacktoberfest+type:issue+state:open+${this.noReplyOnly &&
                         "comments:0"}`
                     )
@@ -141,6 +141,12 @@ new Vue({
                 .split("#")
                 .join("%23")
                 .toLowerCase()
+        }
+    },
+
+    watch: {
+        selectedLanguage() {
+            this.applyFilter()
         }
     },
 
