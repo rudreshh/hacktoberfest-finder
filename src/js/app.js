@@ -31,7 +31,7 @@ new Vue({
                     fetch(
                         `https://api.github.com/search/issues?page=${this.page
                         }&q=language:${this.selectedLanguage
-                        }+label:hacktoberfest+type:issue+state:open+${this.selectedSort === 'noReplys' &&
+                        }+label:hacktoberfest+type:issue+state:open+${this.selectedSort === 'noReplies' &&
                         "comments:0"}`
                     )
                 )
