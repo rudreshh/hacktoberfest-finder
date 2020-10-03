@@ -32,7 +32,7 @@ new Vue({
                         `https://api.github.com/search/issues?page=${this.page
                         }&q=language:${this.selectedLanguage
                         }+label:hacktoberfest+type:issue+state:open+${this.selectedSort === 'noReplies' &&
-                        "comments:0"}`
+                        "comments:0"}+created:2020`
                     )
                 )
                 .then(response => response.json())
