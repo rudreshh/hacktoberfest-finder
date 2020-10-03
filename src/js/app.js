@@ -14,7 +14,6 @@ new Vue({
             isFilterToggled: false,
             isFetching: false,
             showViewMore: false,
-            noReplyOnly: false,
 
             selectedLanguage: 'any',
             selectedSort: 'newest'
@@ -32,7 +31,7 @@ new Vue({
                     fetch(
                         `https://api.github.com/search/issues?page=${this.page
                         }&q=language:${this.selectedLanguage
-                        }+label:hacktoberfest+type:issue+state:open+${this.noReplyOnly &&
+                        }+label:hacktoberfest+type:issue+state:open+${this.selectedSort === 'noReplys' &&
                         "comments:0"}`
                     )
                 )
@@ -112,11 +111,6 @@ new Vue({
             this.isFilterToggled = !this.isFilterToggled
         },
 
-        toggleNoReplyFilter() {
-            this.noReplyOnly = !this.noReplyOnly
-            this.applyFilter()
-        },
-
         resetTopLanguages() {
             this.topLanguages = toplangs
         },
@@ -133,19 +127,11 @@ new Vue({
         }
     },
 
-    computed: {
-        filterLanguage() {
-            return this.selectedLanguage
-                .split("+")
-                .join("%2B")
-                .split("#")
-                .join("%23")
-                .toLowerCase()
-        }
-    },
-
     watch: {
         selectedLanguage() {
+            this.applyFilter()
+        },
+        selectedSort(){
             this.applyFilter()
         }
     },
