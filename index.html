@@ -44,7 +44,8 @@
                     <div>
                         <a
                             class="bg-hacktoberfest-blue hover:bg-hacktoberfest-orange text-white rounded-full px-6 py-3 uppercase font-medium"
-                            href="https://github.com/damcclean/hacktoberfest-finder"
+                            href="https://github.com/damcclean/hacktoberfest-finder" 
+                            target="_blank"
                         >Contribute</a>
                     </div>
                 </div>
@@ -102,18 +103,20 @@
         <main>
             <div class="container mx-auto py-12 px-8">
                 <div class="issue-grid">
-                    <a
-                        v-for="result in results"
-                        class="border border-gray-200 p-4 shadow-sm"
-                        target="_blank"
-                        :href="result.html_url"
+                    <div 
+                        v-for="result in results" 
+                        class="border border-gray-200 p-4 shadow-sm" 
                         :title="result.title"
                     >
-                        <h2 class="text-lg font-semibold mb-2" v-text="result.title"></h2>
-                        <h3 class="text-sm font-medium mb-4" v-text="result.repoTitle"></h3>
+                        <a target="_blank" :href="result.html_url">
+                            <h2 class="text-lg font-semibold mb-2" v-text="result.title"></h2>
+                        </a>
+                        <a target="_blank" :href="result.repository_url">
+                            <h3 class="text-sm text-teal-600 hover:text-hacktoberfest-orange font-medium mb-4" v-text="result.repoTitle"></h3>
+                        </a>
 
-                        <p class="text-sm">{{ result.comments }} comments</p>
-                    </a>
+                        <p class="text-sm text-gray-700">{{ result.comments }} comments</p>
+                    </div>
                     
                     <div
                         v-if="isFetching"
@@ -122,7 +125,6 @@
                     >
                         <div class="h-6 bg-gray-400 rounded mb-3"></div>
                         <div class="h-4 bg-gray-400 rounded mb-4 w-2/4"></div>
-
                         <div class="h-4 bg-gray-400 rounded w-1/4"></div>
                     </div>
                 </div>
@@ -130,10 +132,10 @@
                 <div v-if="showViewMore" class="flex items-center justify-center my-6">
                     <button
                         class="bg-hacktoberfest-blue hover:bg-hacktoberfest-orange text-white rounded-full px-6 py-3 uppercase font-medium"
-                        :disabled="isFetching"
-                        @click="loadIssues"
+                        :class="{ 'opacity-50 cursor-not-allowed hover:hacktoberfest-blue': isFetching }"
+                        :disabled="isFetching" @click="loadIssues"
                     >
-                        {{ isFetching ? 'Loading' : 'Load More' }}
+                        {{ isFetching ? 'Loading...' : 'Load More' }}
                     </button>
                 </div>
             </div>

@@ -48,7 +48,8 @@ new Vue({
                                 .split("/")
                                 .slice(-2)
                                 .join("/"),
-                            repository_url: repository_url,
+                            repository_url: repository_url
+                                .replace("api.github.com/repos", "github.com"),
                             formattedDate: `${new Date(
                                 updated_at
                             ).toLocaleDateString()}, ${new Date(
