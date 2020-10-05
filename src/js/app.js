@@ -37,7 +37,6 @@ new Vue({
                 )
                 .then(response => response.json())
                 .then(issuesResponse => {
-                    console.log(issuesResponse);
                     let newResults = issuesResponse.items.map(
                         ({ repository_url, updated_at, labels, ...rest }) => ({
                             ...rest,
