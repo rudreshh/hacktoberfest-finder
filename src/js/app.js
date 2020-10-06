@@ -116,6 +116,10 @@ new Vue({
             this.topLanguages = toplangs
         },
 
+        scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" })
+        },
+
         // If not clicking the toggleFilter or the languageFilter
         // within that, then close the filter
         onClickOutside(event) {

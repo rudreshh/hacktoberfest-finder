@@ -7,6 +7,7 @@
 - [TicTak21](https://github.com/TicTak21)
 - [BetaHuhn](https://github.com/BetaHuhn)
 - [Shaddamah](https://github.com/Shaddamah)
+- [PanduRijal](https://github.com/pandurijal)
 
 ## 2019
 
