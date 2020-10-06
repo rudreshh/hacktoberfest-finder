@@ -8,6 +8,7 @@
 - [BetaHuhn](https://github.com/BetaHuhn)
 - [Shaddamah](https://github.com/Shaddamah)
 - [PanduRijal](https://github.com/pandurijal)
+- [Abhinav Reddy](https://github.com/AbhinavReddy-Dev)
 
 ## 2019
 
