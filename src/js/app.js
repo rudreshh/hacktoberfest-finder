@@ -1,5 +1,8 @@
+import secrets from '../../secrets.key';
+
 window.Vue = require("vue")
 const { allLanguages, topLanguages: toplangs } = require("./languages")
+
 
 new Vue({
     el: "#app",
@@ -16,16 +19,93 @@ new Vue({
             showViewMore: false,
 
             selectedLanguage: 'any',
-            selectedSort: 'newest'
+            selectedSort: 'newest',
+            cursor:null,
         }
     },
 
     methods: {
-        async filterLegitIssues(issues) {
-            const repos = await fetch('https://api.github.com/search/repositories?per_page=100&q=topic:hacktoberfest');
-            const reposData = await repos.json();
-            const reposUrls = await reposData.items.map(repo=>repo.url);
-            return issues.filter(issue=>reposUrls.includes(issue.repository_url));
+
+        async fetchRepos(){
+            const headers = {"Content-Type": "application/json"};
+            headers["Authorization"] = `Token ${secrets.GITHUB_TOKEN}`;
+                const query = /* GraphQL */ `query {
+                search(
+                  type: REPOSITORY
+                  query: """
+                  topic:hacktoberfest
+                  created:>=2020-01-01
+                  language:${this.selectedLanguage}
+                  """
+                  first: 30
+                  after:${this.cursor?`"${this.cursor}"`:null}
+                ) {
+                  repos: edges {
+                      cursor
+                    repo: node {
+                      ... on Repository {
+                        issues(
+                          labels: "hacktoberfest"
+                          first: 20
+                          filterBy: { assignee: null }
+                          states: OPEN
+                          orderBy: { field: CREATED_AT, direction: DESC }
+                        ) {
+                          issuesAll: edges {
+                            issue: node {
+                              title
+                              url
+                              createdAt
+                              repository{
+                                  url
+                              }
+                              labels(first:2){
+                                  edges{
+                                      node{
+                                          name
+                                      }
+                                  }
+                              }
+                              comments {
+                                totalCount
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              `;
+
+            const result = await fetch('https://api.github.com/graphql',
+                {   method:'POST',
+                    headers:headers,
+                    body:JSON.stringify({query:query})
+                }
+            );
+            const data = await result.json();
+            const searchedRepos = data.data.search.repos; 
+            this.cursor = searchedRepos[searchedRepos.length-1].cursor;
+            const repos = data.data.search.repos.filter(({repo})=>repo.issues.issuesAll.length>0);
+            return repos;
+        },
+        async getIssues(){
+            const repos = await this.fetchRepos();
+            const issues = repos.flatMap(({repo})=>repo.issues.issuesAll);
+            return issues;
+        },
+        getRepoName(repo_url){
+            return repo_url.split("/").slice(-2).join("/");
+        },
+        sortIssues(issues){
+            return issues.sort((a, b) => {
+                if (this.selectedSort==='noReplies')
+                    return a.issue.comments.totalCount > b.issue.comments.totalCount;
+                else 
+                    return Date.parse(b.issue.createdAt) - Date.parse(a.issue.createdAt);
+            });
         },
         loadIssues() {
             this.isFetching = true
@@ -33,38 +113,23 @@ new Vue({
             fetch("https://api.github.com/emojis")
                 .then(response => response.json())
                 .then(emojisResponse => (this.emojis = emojisResponse))
-                .then(() =>
-                    fetch(
-                        `https://api.github.com/search/issues?per_page=100&page=${this.page
-                        }&q=language:${this.selectedLanguage
-                        }+label:hacktoberfest+type:issue+state:open+${this.selectedSort === 'noReplies' &&
-                        "comments:0"}+created:2020`
-                    )
-                )
-                .then(response => response.json())
                 .then(async issuesResponse => {
-                    const legitIssues = await this.filterLegitIssues(issuesResponse.items);
-                    
-                    let newResults = legitIssues.map(
-                        ({ repository_url, updated_at, labels, ...rest }) => ({
+                    const issues = await this.getIssues();
+                    const sortedIssues = this.sortIssues(issues);
+                    let newResults = issues.map(
+                        ({issue,...rest}) => ({
                             ...rest,
-                            labels: labels.map(label => ({
-                                ...label,
-                                parsedName: this.insertEmojis(label.name)
+                            html_url:issue.url,
+                            title:issue.title,
+                            labels: issue.labels.edges.map(({node}) => ({
+                                ...node,
+                                parsedName: this.insertEmojis(node.name)
                             })),
-                            repoTitle: repository_url
-                                .split("/")
-                                .slice(-2)
-                                .join("/"),
-                            repository_url: repository_url
-                                .replace("api.github.com/repos", "github.com"),
-                            formattedDate: `${new Date(
-                                updated_at
-                            ).toLocaleDateString()}, ${new Date(
-                                updated_at
-                            ).toLocaleTimeString()}`
-                        })
-                    )
+                            repoTitle: this.getRepoName(issue.repository.url),
+                            repository_url: issue.repository.url,
+                            comments:issue.comments.totalCount
+                            })
+                    ) 
 
                     this.results = [...this.results, ...newResults]
 
@@ -72,7 +137,7 @@ new Vue({
                     this.showViewMore = true
                     this.isFetching = false
 
-                    if (legitIssues.length === 0) {
+                    if (issues.length === 0) {
                         // case when all the issues are already loaded
                         this.showViewMore = false
                     }
