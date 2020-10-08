@@ -9,6 +9,7 @@
 - [Shaddamah](https://github.com/Shaddamah)
 - [PanduRijal](https://github.com/pandurijal)
 - [Abhinav Reddy](https://github.com/AbhinavReddy-Dev)
+- [Kalovelo](https://github.com/kalovelo)
 
 ## 2019
 
