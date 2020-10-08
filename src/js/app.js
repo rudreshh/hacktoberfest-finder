@@ -21,6 +21,12 @@ new Vue({
     },
 
     methods: {
+        async filterLegitIssues(issues) {
+            const repos = await fetch('https://api.github.com/search/repositories?per_page=100&q=topic:hacktoberfest');
+            const reposData = await repos.json();
+            const reposUrls = await reposData.items.map(repo=>repo.url);
+            return issues.filter(issue=>reposUrls.includes(issue.repository_url));
+        },
         loadIssues() {
             this.isFetching = true
 
@@ -29,15 +35,17 @@ new Vue({
                 .then(emojisResponse => (this.emojis = emojisResponse))
                 .then(() =>
                     fetch(
-                        `https://api.github.com/search/issues?page=${this.page
+                        `https://api.github.com/search/issues?per_page=100&page=${this.page
                         }&q=language:${this.selectedLanguage
                         }+label:hacktoberfest+type:issue+state:open+${this.selectedSort === 'noReplies' &&
                         "comments:0"}+created:2020`
                     )
                 )
                 .then(response => response.json())
-                .then(issuesResponse => {
-                    let newResults = issuesResponse.items.map(
+                .then(async issuesResponse => {
+                    const legitIssues = await this.filterLegitIssues(issuesResponse.items);
+                    
+                    let newResults = legitIssues.map(
                         ({ repository_url, updated_at, labels, ...rest }) => ({
                             ...rest,
                             labels: labels.map(label => ({
@@ -64,7 +72,7 @@ new Vue({
                     this.showViewMore = true
                     this.isFetching = false
 
-                    if (issuesResponse.items.length === 0) {
+                    if (legitIssues.length === 0) {
                         // case when all the issues are already loaded
                         this.showViewMore = false
                     }
