@@ -1,4 +1,4 @@
-import secrets from '../../secrets.key';
+import secrets from '../../secrets.key'
 
 window.Vue = require("vue")
 const { allLanguages, topLanguages: toplangs } = require("./languages")
@@ -27,8 +27,8 @@ new Vue({
     methods: {
 
         async fetchRepos(){
-            const headers = {"Content-Type": "application/json"};
-            headers["Authorization"] = `Token ${secrets.GITHUB_TOKEN}`;
+            const headers = {"Content-Type": "application/json"}
+            headers["Authorization"] = `Token ${secrets.GITHUB_TOKEN}`
                 const query = /* GraphQL */ `query {
                 search(
                   type: REPOSITORY
@@ -77,36 +77,42 @@ new Vue({
                   }
                 }
               }
-              `;
+              `
 
             const result = await fetch('https://api.github.com/graphql',
                 {   method:'POST',
                     headers:headers,
                     body:JSON.stringify({query:query})
                 }
-            );
-            const data = await result.json();
-            const searchedRepos = data.data.search.repos; 
-            this.cursor = searchedRepos[searchedRepos.length-1].cursor;
-            const repos = data.data.search.repos.filter(({repo})=>repo.issues.issuesAll.length>0);
-            return repos;
+            )
+            const data = await result.json()
+            const searchedRepos = data.data.search.repos
+            this.cursor = searchedRepos[searchedRepos.length-1].cursor
+            const repos = data.data.search.repos.filter( ({repo}) => { 
+                return repo.issues.issuesAll.length>0
+            })
+            return repos
         },
+        
         async getIssues(){
-            const repos = await this.fetchRepos();
-            const issues = repos.flatMap(({repo})=>repo.issues.issuesAll);
-            return issues;
+            const repos = await this.fetchRepos()
+            const issues = repos.flatMap(({repo})=>repo.issues.issuesAll)
+            return issues
         },
+
         getRepoName(repo_url){
-            return repo_url.split("/").slice(-2).join("/");
+            return repo_url.split("/").slice(-2).join("/")
         },
+
         sortIssues(issues){
             return issues.sort((a, b) => {
                 if (this.selectedSort==='noReplies')
-                    return a.issue.comments.totalCount > b.issue.comments.totalCount;
+                    return a.issue.comments.totalCount > b.issue.comments.totalCount
                 else 
-                    return Date.parse(b.issue.createdAt) - Date.parse(a.issue.createdAt);
-            });
+                    return Date.parse(b.issue.createdAt) - Date.parse(a.issue.createdAt)
+            })
         },
+
         loadIssues() {
             this.isFetching = true
 
@@ -114,8 +120,8 @@ new Vue({
                 .then(response => response.json())
                 .then(emojisResponse => (this.emojis = emojisResponse))
                 .then(async issuesResponse => {
-                    const issues = await this.getIssues();
-                    const sortedIssues = this.sortIssues(issues);
+                    const issues = await this.getIssues()
+                    const sortedIssues = this.sortIssues(issues)
                     let newResults = issues.map(
                         ({issue,...rest}) => ({
                             ...rest,
