@@ -1,8 +1,5 @@
-import secrets from '../../secrets.key'
-
 window.Vue = require("vue")
 const { allLanguages, topLanguages: toplangs } = require("./languages")
-
 
 new Vue({
     el: "#app",
@@ -28,7 +25,7 @@ new Vue({
 
         async fetchRepos(){
             const headers = {"Content-Type": "application/json"}
-            headers["Authorization"] = `Token ${secrets.GITHUB_TOKEN}`
+            headers["Authorization"] = `Token ${process.env.MIX_GITHUB_TOKEN}`
                 const query = /* GraphQL */ `query {
                 search(
                   type: REPOSITORY

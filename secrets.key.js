@@ -1,3 +1,0 @@
-export default {
-  GITHUB_TOKEN:"INSERT_YOUR_GITHUB_TOKEN_HERE"
-}
