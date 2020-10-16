@@ -1,16 +1,3 @@
-const topLanguages = [
-  "JavaScript",
-  "TypeScript",
-  "Python",
-  "Java",
-  "PHP",
-  "Go",
-  "HTML",
-  "C++",
-  "C#",
-  "Ruby"
-];
-
 const allLanguages = [
   "ActionScript",
   "C",
