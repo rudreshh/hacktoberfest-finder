@@ -10,6 +10,7 @@
 - [PanduRijal](https://github.com/pandurijal)
 - [Abhinav Reddy](https://github.com/AbhinavReddy-Dev)
 - [Kalovelo](https://github.com/kalovelo)
+- [Mahinour Elsheikh](https://github.com/mahinourElsheikh)
 
 ## 2019
 
