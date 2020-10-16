@@ -1,13 +1,12 @@
 window.Vue = require("vue")
-const { allLanguages, topLanguages: toplangs } = require("./languages")
+const { allLanguages } = require("./languages")
 
 new Vue({
     el: "#app",
 
     data() {
         return {
-            topLanguages: [...toplangs],
-            languages: allLanguages,
+            languages: allLanguages.sort(),
             results: [],
             emojis: [],
             page: 1,
@@ -169,27 +168,19 @@ new Vue({
 
         searchLanguages(event) {
             let searched = event.target.value
-
-            if (searched.length === 0) {
-                this.resetTopLanguages()
-            } else {
-                this.topLanguages = this.languages.filter(
+            if (searched.length !== 0) {
+                this.selectedLanguage = this.languages.filter(
                     lang => lang.toLowerCase().indexOf(searched.toLowerCase()) > -1
                 )
             }
         },
 
         closeLanguageSearch(event) {
-            this.resetTopLanguages()
             this.isFilterToggled = false
         },
 
         toggleFilter() {
             this.isFilterToggled = !this.isFilterToggled
-        },
-
-        resetTopLanguages() {
-            this.topLanguages = toplangs
         },
 
         scrollToTop() {
