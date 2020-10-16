@@ -169,7 +169,7 @@ new Vue({
         searchLanguages(event) {
             let searched = event.target.value
             if (searched.length !== 0) {
-                this.topLanguages = this.languages.filter(
+                this.selectedLanguage = this.languages.filter(
                     lang => lang.toLowerCase().indexOf(searched.toLowerCase()) > -1
                 )
             }

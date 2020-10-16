@@ -493,6 +493,5 @@ const allLanguages = [
 ];
 
 module.exports = {
-  topLanguages,
   allLanguages
 };
