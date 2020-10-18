@@ -103,10 +103,12 @@ new Vue({
 
         sortIssues(issues){
             return issues.sort((a, b) => {
-                if (this.selectedSort==='noReplies')
+                if (this.selectedSort==='noReplies') {
                     return a.issue.comments.totalCount > b.issue.comments.totalCount
-                else
+                }
+                else {
                     return Date.parse(b.issue.createdAt) - Date.parse(a.issue.createdAt)
+                }
             })
         },
 
