@@ -1,11 +1,12 @@
 window.Vue = require("vue")
-const { allLanguages } = require("./languages")
+const { topLanguages, allLanguages } = require("./languages")
 
 new Vue({
     el: "#app",
 
     data() {
         return {
+            topLanguages: topLanguages,
             languages: allLanguages.sort(),
             results: [],
             emojis: [],
@@ -84,12 +85,12 @@ new Vue({
             const data = await result.json()
             const searchedRepos = data.data.search.repos
             this.cursor = searchedRepos[searchedRepos.length-1].cursor
-            const repos = data.data.search.repos.filter( ({repo}) => { 
+            const repos = data.data.search.repos.filter( ({repo}) => {
                 return repo.issues.issuesAll.length>0
             })
             return repos
         },
-        
+
         async getIssues(){
             const repos = await this.fetchRepos()
             const issues = repos.flatMap(({repo})=>repo.issues.issuesAll)
@@ -102,10 +103,12 @@ new Vue({
 
         sortIssues(issues){
             return issues.sort((a, b) => {
-                if (this.selectedSort==='noReplies')
+                if (this.selectedSort==='noReplies') {
                     return a.issue.comments.totalCount > b.issue.comments.totalCount
-                else 
+                }
+                else {
                     return Date.parse(b.issue.createdAt) - Date.parse(a.issue.createdAt)
+                }
             })
         },
 
@@ -131,7 +134,7 @@ new Vue({
                             repository_url: issue.repository.url,
                             comments:issue.comments.totalCount
                             })
-                    ) 
+                    )
 
                     this.results = [...this.results, ...newResults]
 
