@@ -29,7 +29,7 @@
 
 ## 2018
 
-- [damcclean](https://github.com/damcclean)
+- [duncanmcclean](https://github.com/duncanmcclean)
 - [ashvin-godbole](https://github.com/ashvin-godbole)
 - [indransyah](https://github.com/indransyah)
 - [dharmadev108](https://github.com/dharmadev108)
