@@ -2,7 +2,7 @@
 
 [Hacktoberfest Finder](https://hacktoberfest-finder.netlify.app/) is a project to help developers find projects they can help out on during the month of Hacktoberfest (October).
 
-This is an un-official project, not associated with DigitalOcean, Intel or DEV. It's maintained by [Duncan McClean](https://duncanm.dev).
+This is an un-official project, not associated with DigitalOcean, Intel or DEV. It's maintained by [Duncan McClean](https://duncanmcclean.com).
 
 ## Local Installation
 
