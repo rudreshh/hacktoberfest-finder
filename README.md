@@ -15,10 +15,10 @@ This is an un-official project, not associated with DigitalOcean, Intel or DEV. 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/hacktoberfest-finder/hacktoberfest-finder/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-If you are a first time contributor, please add your name to [CONTRIBUTORS.md](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md)
+If you are a first time contributor, please add your name to [CONTRIBUTORS.md](https://github.com/hacktoberfest-finder/hacktoberfest-finder/blob/master/CONTRIBUTORS.md)
 
 ## Contributors
 
-You can find a list of contributors to this project in the [`CONTRIBUTORS.md`](https://github.com/damcclean/hacktoberfest-finder/blob/master/CONTRIBUTORS.md) file.
+You can find a list of contributors to this project in the [`CONTRIBUTORS.md`](https://github.com/hacktoberfest-finder/hacktoberfest-finder/blob/master/CONTRIBUTORS.md) file.
