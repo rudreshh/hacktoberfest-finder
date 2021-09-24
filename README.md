@@ -10,7 +10,7 @@ This is an un-official project, not associated with DigitalOcean, Intel or DEV. 
 2. Clone your fork to your computer.
 3. Run `npm install` in the cloned folder.
 4. Copy the `.env.example` file to `.env`
-5. Create a Github Personal Access Token [(read more)](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) and put it in your `.env` file.
+5. Create a Github Personal Access Token [(read more)](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) and put it in your `.env` file. You don't need to select any scopes.
 5. Then compile assets with `npm run dev` or watch for asset changes with `npm run watch`.
 
 ## Contributing
