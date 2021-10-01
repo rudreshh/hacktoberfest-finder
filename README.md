@@ -24,7 +24,7 @@ git clone git@github.com:YOUR-GITHUB-USERNAME/hacktoberfest-finder.git
 
 ## Contributing
 
-Before contributing any pull requests to this pull request, please read the [`CONTRIBUTING.md`](CONTRIBUTING) document. It details the project's code of conduct and the process of submitting pull requests.
+Before contributing any pull requests to this pull request, please read the [`CONTRIBUTING.md`](./CONTRIBUTING.md) document. It details the project's code of conduct and the process of submitting pull requests.
 
 Please don't try and submit pull requests for every open issue - leave some for others!
 
