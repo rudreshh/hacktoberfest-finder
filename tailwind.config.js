@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
         colors: {
-            'hacktoberfest-blue': '#91A88C',
-            'hacktoberfest-orange': '#B53A25'
+            'hacktoberfest-green': '#91A88C',
+            'hacktoberfest-red': '#B53A25'
         }
     },
   },
