@@ -2,6 +2,8 @@
 
 **We welcome open source contributors!!**
 
+However, please don't try and submit pull requests for every open issue - leave some for others!
+
 ## Pull Request Process
 
 1. Fork this repository and use the setup process (which can be found in the [README](./README.md))
