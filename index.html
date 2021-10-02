@@ -10,7 +10,7 @@
     <meta name="description" content="Hacktoberfest Finder helps you find issues which you could help fix." />
     <meta name="keywords" content="Hacktoberfest, Programming, GitHub, DigitalOcean, DEV" />
     <meta name="author" content="Duncan McClean and Contributors" />
-    <meta property="og:title" content="Hacktoberfest 2019 Finder" />
+    <meta property="og:title" content="Hacktoberfest Finder" />
     <meta property="og:description" content="Hacktoberfest Finder helps you find issues which you could help fix." />
     <meta property="og:image" content="https://hacktoberfest-finder.netlify.com/img/issuefinder.png" />
     <meta property="og:url" content="https://hacktoberfest-finder.netlify.com/" />
@@ -30,9 +30,9 @@
 
 <body class="bg-secondary font-space">
     <div id="app">
-        <header class="bg-gray-200 px-8">
+        <header class="px-8 bg-gray-200">
             <div class="py-8">
-                <div class="container mx-auto flex items-center justify-between">
+                <div class="container flex items-center justify-between mx-auto">
                     <a href="/">
                         <img
                             class="h-24"
@@ -43,7 +43,7 @@
 
                     <div>
                         <a
-                            class="bg-hacktoberfest-green hover:bg-hacktoberfest-red text-white rounded-full px-6 py-3 uppercase font-medium"
+                            class="px-6 py-3 font-medium text-white uppercase rounded-full bg-hacktoberfest-green hover:bg-hacktoberfest-red"
                             href="https://github.com/hacktoberfest-finder/hacktoberfest-finder"
                             target="_blank"
                         >Contribute</a>
@@ -51,15 +51,15 @@
                 </div>
             </div>
 
-            <div class="max-w-xl mx-auto pb-20">
-                <h1 class="text-center text-5xl font-bold mb-8">Find issues to help with during <span class="text-hacktoberfest-red">Hacktoberfest</span></h1>
+            <div class="max-w-xl pb-20 mx-auto">
+                <h1 class="mb-8 text-5xl font-bold text-center">Find issues to help with during <span class="text-hacktoberfest-red">Hacktoberfest</span></h1>
 
                 <form action="#">
-                    <div class="w-full bg-white rounded-lg px-4 py-3 flex">
+                    <div class="flex w-full px-4 py-3 bg-white rounded-lg">
                         <div class="relative w-1/2 pr-2 border-r border-gray-200">
                             <select
                                 v-model="selectedLanguage"
-                                class="block appearance-none w-full bg-white px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
+                                class="block w-full px-4 py-2 pr-8 leading-tight bg-white rounded appearance-none focus:outline-none focus:shadow-outline"
                             >
                               <option
                                 selected
@@ -84,15 +84,15 @@
                                 ></option>
                               </optgroup>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
 
                         <div class="relative w-1/2 pl-2">
                             <select
                                 v-model="selectedSort"
-                                class="block appearance-none w-full bg-white px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
+                                class="block w-full px-4 py-2 pr-8 leading-tight bg-white rounded appearance-none focus:outline-none focus:shadow-outline"
                             >
                                 <option
                                     selected
@@ -103,8 +103,8 @@
                                     value="noReplies"
                                 >No Replies</option>
                             </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
                     </div>
@@ -113,18 +113,18 @@
         </header>
 
         <main>
-            <div class="container mx-auto py-12 px-8">
+            <div class="container px-8 py-12 mx-auto">
                 <div class="issue-grid">
                     <div
                         v-for="result in results"
-                        class="border border-gray-200 p-4 shadow-sm break-words"
+                        class="p-4 break-words border border-gray-200 shadow-sm"
                         :title="result.title"
                     >
                         <a target="_blank" :href="result.html_url">
-                            <h2 class="text-lg font-semibold mb-2" v-text="result.title"></h2>
+                            <h2 class="mb-2 text-lg font-semibold" v-text="result.title"></h2>
                         </a>
                         <a target="_blank" :href="result.repository_url">
-                            <h3 class="text-sm text-teal-600 hover:text-hacktoberfest-red font-medium mb-4" v-text="result.repoTitle"></h3>
+                            <h3 class="mb-4 text-sm font-medium text-teal-600 hover:text-hacktoberfest-red" v-text="result.repoTitle"></h3>
                         </a>
 
                         <p class="text-sm text-gray-700">{{ result.comments }} comments</p>
@@ -133,17 +133,17 @@
                     <div
                         v-if="isFetching"
                         v-for="index in 15" :key="index"
-                        class="border border-gray-200 p-4 shadow-sm animate-pulse"
+                        class="p-4 border border-gray-200 shadow-sm animate-pulse"
                     >
-                        <div class="h-6 bg-gray-400 rounded mb-3"></div>
-                        <div class="h-4 bg-gray-400 rounded mb-4 w-2/4"></div>
-                        <div class="h-4 bg-gray-400 rounded w-1/4"></div>
+                        <div class="h-6 mb-3 bg-gray-400 rounded"></div>
+                        <div class="w-2/4 h-4 mb-4 bg-gray-400 rounded"></div>
+                        <div class="w-1/4 h-4 bg-gray-400 rounded"></div>
                     </div>
                 </div>
 
                 <div v-if="showViewMore" class="flex items-center justify-center my-6">
                     <button
-                        class="bg-hacktoberfest-green hover:bg-hacktoberfest-red text-white rounded-full px-6 py-3 uppercase font-medium"
+                        class="px-6 py-3 font-medium text-white uppercase rounded-full bg-hacktoberfest-green hover:bg-hacktoberfest-red"
                         :class="{ 'opacity-50 cursor-not-allowed hover:hacktoberfest-green': isFetching }"
                         :disabled="isFetching" @click="loadIssues"
                     >
@@ -151,8 +151,8 @@
                     </button>
                 </div>
             </div>
-            <div class="fixed bottom-0 mb-8 right-0 mr-8" @click="scrollToTop">
-                <div class="bg-hacktoberfest-green p-3 rounded-full cursor-pointer">
+            <div class="fixed bottom-0 right-0 mb-8 mr-8" @click="scrollToTop">
+                <div class="p-3 rounded-full cursor-pointer bg-hacktoberfest-green">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20">
                         <path d="M15 14l-5-5l-5 5l-2-1l7-7l7 7z" fill="#ffffff" />
                     </svg>
@@ -160,7 +160,7 @@
             </div>
         </main>
 
-        <footer class="bg-gray-200 py-6 px-8">
+        <footer class="px-8 py-6 bg-gray-200">
             <div class="container mx-auto">
                 <p class="text-sm">Hacktoberfest Finder is not associated with DigitalOcean, Appwrite, Intel or Deepsource. It's an unofficial project maintained by <a class="font-medium text-hacktoberfest-green" href="https://duncanm.dev?ref=hacktoberfest">Duncan McClean</a> with help of <a class="font-medium text-hacktoberfest-green" href="https://github.com/hacktoberfest-finder/hacktoberfest-finder/blob/master/CONTRIBUTORS.md">open source contributors</a>.</p>
             </div>
