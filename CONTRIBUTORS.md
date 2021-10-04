@@ -5,7 +5,7 @@
 - [Manoj Krishna](https://github.com/manojkrishnak)
 - [Aman Dutt](https://github.com/adgamerx)
 - [Faran Shaikh](https://github.com/faran4engg)
-
+- [Benjamin Knorr](https://github.com/knorrke)
 
 ## 2020
 
