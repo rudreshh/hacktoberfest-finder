@@ -30,9 +30,9 @@ new Vue({
                 search(
                   type: REPOSITORY
                   query: """
-                  topic:hacktoberfest
-                  created:>=2020-01-01
-                  language:${this.selectedLanguage}
+                  topic:hacktoberfest 
+                  created:>=2020-01-01 
+                  language:${this.selectedLanguage} 
                   """
                   first: 30
                   after:${this.cursor?`"${this.cursor}"`:null}
