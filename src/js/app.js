@@ -18,6 +18,7 @@ new Vue({
             selectedLanguage: 'any',
             selectedSort: 'newest',
             cursor:null,
+            isScrollToTopButtonVisible: false,
         }
     },
 
@@ -190,6 +191,12 @@ new Vue({
             window.scrollTo({ top: 0, behavior: "smooth" })
         },
 
+        checkIfScrollToTopButtonShouldAppear() {
+            const TOP_OFFSET = 300
+            const surpassedTopOffset = window.scrollY >= TOP_OFFSET
+            this.isScrollToTopButtonVisible = surpassedTopOffset
+        },
+
         // If not clicking the toggleFilter or the languageFilter
         // within that, then close the filter
         onClickOutside(event) {
@@ -214,9 +221,11 @@ new Vue({
     mounted() {
         this.loadIssues()
         document.addEventListener("click", this.onClickOutside)
+        window.addEventListener("scroll", this.checkIfScrollToTopButtonShouldAppear)
     },
 
     destroyed() {
         document.removeEventListener("click", this.onClickOutside)
+        window.removeEventListener("scroll", this.checkIfScrollToTopButtonShouldAppear)
     }
 })
