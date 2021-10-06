@@ -7,6 +7,7 @@
 - [Faran Shaikh](https://github.com/faran4engg)
 - [Benjamin Knorr](https://github.com/knorrke)
 - [João Souto](https://github.com/JoaoVSouto)
+- [Leo Voon](https://github.com/leovoon)
 
 ## 2020
 
