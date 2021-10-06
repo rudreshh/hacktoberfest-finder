@@ -6,6 +6,7 @@
 - [Aman Dutt](https://github.com/adgamerx)
 - [Faran Shaikh](https://github.com/faran4engg)
 - [Benjamin Knorr](https://github.com/knorrke)
+- [João Souto](https://github.com/JoaoVSouto)
 
 ## 2020
 
